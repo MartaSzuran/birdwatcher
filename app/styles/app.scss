@@ -1,1 +1,31 @@
 @import 'bootstrap';
+
+.ember-google-map {
+  width: 500px;
+  height: 500px;
+  margin-top: 50px;
+  margin-left: 50px;
+  border-color: #ade9a8;
+  border-width: 20px;
+  border-style: solid;
+}
+
+.nav {
+  font-size: 20px;
+  font-weight: bold;
+  color: #ade9a8;
+  background-color: bisque;
+  margin-top: 20px;
+  margin-left: 40px;
+}
+
+.nav-link {
+  text-decoration: none;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding-left: 30px;
+  color:#279c66;
+}
+
+.nav-link:hover {
+  color: #1f7d34;
+}
