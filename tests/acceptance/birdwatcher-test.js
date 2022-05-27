@@ -17,8 +17,5 @@ module('Acceptance | birdwatcher', function (hooks) {
 
     assert.dom('ul').exists();
     assert.dom('li a.nav-link').hasText('Home');
-    
   });
-
 });
-
