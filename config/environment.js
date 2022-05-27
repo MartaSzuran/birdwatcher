@@ -2,6 +2,7 @@
 
 module.exports = function (environment) {
   let ENV = {
+    // MY_OTHER_KEY: process.env.GOOGLE_MAPS_API_KEY,
     modulePrefix: 'birdwatcher',
     environment,
     rootURL: '/',
