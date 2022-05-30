@@ -1,7 +1,9 @@
-{{page-title "Index"}}
+{{page-title 'Index'}}
+<GeneralContainer>
+  <Navbar />
 
-<Navbar />
+  <GMap @lat='51.508530' @lng='-0.076132' @zoom={{12}} />
 
-<GMap @lat="51.508530" @lng="-0.076132" @zoom={{12}} />
+</GeneralContainer>
 
 {{outlet}}

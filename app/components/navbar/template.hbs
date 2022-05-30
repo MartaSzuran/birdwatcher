@@ -1,12 +1,11 @@
-<ul class="nav">
-  <li class="nav-item">
-    <a class="nav-link" href="/">Home</a>
-    {{!-- <a class="nav-link" href="/">Home</a> --}}
+<ul class='nav'>
+  <li class='nav-item'>
+    <LinkTo @route='/' class='nav-link'>Home</LinkTo>
   </li>
-  <li class="nav-item">
-    <a class="nav-link" href="/user">Profile</a>
+  <li class='nav-item'>
+    <LinkTo @route='user' class='nav-link'>Profile</LinkTo>
   </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">Add obeservation</a>
+  <li class='nav-item'>
+    <LinkTo @route='observation' class='nav-link'>Add obeservation</LinkTo>
   </li>
 </ul>
