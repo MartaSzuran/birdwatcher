@@ -27,5 +27,33 @@ export default class ApplicationRoute extends Route {
 
     await user1Model.save();
     await user2Model.save();
+
+    const obser1 = {
+      id: 1,
+      birdname: 'Brodziec piskliwy',
+      location: 'Żywiec',
+      date: '29-05-2022',
+    };
+
+    const obser2 = {
+      id: 2,
+      birdname: 'Sieweczka obrożna',
+      location: 'Żywiec',
+      date: '30-05-2022',
+    };
+    const obser3 = {
+      id: 3,
+      birdname: 'Czapla siwa',
+      location: 'Bielsko-Biała',
+      date: '31-05-2022',
+    };
+
+    const obser1Model = this.store.createRecord('observation', obser1);
+    const obser2Model = this.store.createRecord('observation', obser2);
+    const obser3Model = this.store.createRecord('observation', obser3);
+
+    await obser1Model.save();
+    await obser2Model.save();
+    await obser3Model.save();
   }
 }

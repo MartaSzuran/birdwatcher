@@ -1,0 +1,20 @@
+<table class='table table-striped'>
+  <thead>
+    <tr>
+      <th scope='col'>ID</th>
+      <th scope='col'>Bird name</th>
+      <th scope='col'>Location</th>
+      <th scope='col'>Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each @observations as |observation|}}
+      <tr>
+        <td>{{observation.id}}</td>
+        <td>{{observation.birdname}}</td>
+        <td>{{observation.location}}</td>
+        <td>{{observation.date}}</td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>

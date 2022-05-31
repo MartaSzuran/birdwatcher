@@ -6,7 +6,6 @@ export default class UserRoute extends Route {
 
   model() {
     const user = this.store.findRecord('user', 1);
-    console.log(user.get('username'));
     return user;
   }
 }
