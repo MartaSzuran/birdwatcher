@@ -10,4 +10,5 @@ Router.map(function () {
   this.route('/');
   this.route('user');
   this.route('observation');
+  this.route('observations');
 });
