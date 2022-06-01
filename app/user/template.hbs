@@ -3,6 +3,7 @@
 <GeneralContainer>
   <Navbar />
   <User::Details @user={{this.model}} />
+  <ShowUserObservations @observations={{this.model.observations}} />
 </GeneralContainer>
 
 {{outlet}}
