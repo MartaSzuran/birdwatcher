@@ -34,4 +34,13 @@ $mynewcolor: #77cccc;
   @include button-variant($mynewcolor, darken($mynewcolor, 15%), darken($mynewcolor, 10%), lighten($mynewcolor, 5%), lighten($mynewcolor, 10%), darken($mynewcolor, 30%));
   margin-left: 50px;
   margin-right: 50px;
+
+}
+
+.input-group>.inputGroup-sizing-default {
+  flex: 0 0 30%;
+}
+
+.input-group .input-group-text {
+  width: 10%;
 }
