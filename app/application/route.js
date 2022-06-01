@@ -34,6 +34,7 @@ export default class ApplicationRoute extends Route {
       location: 'Żywiec',
       date: '29-05-2022',
       notes: 'some informations that are important to user/others.',
+      owner: user1Model,
     };
 
     const obser2 = {
@@ -42,6 +43,7 @@ export default class ApplicationRoute extends Route {
       location: 'Żywiec',
       date: '30-05-2022',
       notes: 'some informations that are important to user/others.',
+      owner: user1Model,
     };
     const obser3 = {
       id: 3,
@@ -49,6 +51,7 @@ export default class ApplicationRoute extends Route {
       location: 'Bielsko-Biała',
       date: '31-05-2022',
       notes: 'some informations that are important to user/others.',
+      owner: user2Model,
     };
 
     const obser1Model = this.store.createRecord('observation', obser1);
