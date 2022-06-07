@@ -42,7 +42,9 @@
   <div class='d-flex'>
     <button
       type='submit'
-      class='btn w-50 btn-lg btn-primary active mr-1'
+      class='btn w-50 btn-lg btn-primary
+        {{@isEmptyField "disabled" "active"}}
+        mr-1'
     >Save</button>
     <button
       type='button'
