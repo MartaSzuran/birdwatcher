@@ -11,6 +11,9 @@ module.exports = function (defaults) {
     sassOptions: {
       includePaths: ['node_modules/bootstrap/scss'],
     },
+    flatpickr: {
+      theme: 'material_blue',
+    },
   });
 
   app.import('node_modules/bootstrap/dist/js/bootstrap.bundle.min.js');
