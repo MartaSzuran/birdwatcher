@@ -10,6 +10,7 @@ export default class ApplicationRoute extends Route {
       username: 'Pan Drozd',
       email: 'pan.drozd@gmail.com',
       info: 'informacje o użytkowaniku 1',
+      password: 'drozd123',
       photoURL:
         'https://upload.wikimedia.org/wikipedia/commons/6/6e/Song_Thrush_Turdus_philomelos.jpg',
     };
@@ -19,6 +20,7 @@ export default class ApplicationRoute extends Route {
       username: 'Pan Kos',
       email: 'pan.kos@gmail.com',
       info: 'informacje o użytkowaniku 2',
+      password: 'kos123',
       photoURL: 'https://janadamski.eu/wp-content/uploads/2016/10/Kos_01.jpg',
     };
 
