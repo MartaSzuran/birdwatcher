@@ -12,4 +12,6 @@ Router.map(function () {
     this.route('observation');
     this.route('observations');
   });
+  this.route('register');
+  this.route('login');
 });
