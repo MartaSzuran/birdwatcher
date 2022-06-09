@@ -11,7 +11,7 @@ export default class ObservationFormComponent extends Component {
   @tracked notes = '';
 
   get isEmptyField() {
-    return !(this.birdname, this.location, this.notes);
+    return !(this.birdname && this.location && this.notes);
   }
 
   @action
