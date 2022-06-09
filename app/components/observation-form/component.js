@@ -7,11 +7,11 @@ export default class ObservationFormComponent extends Component {
   @service store;
   @tracked date = '';
   @tracked birdname = '';
-  @tracked localization = '';
+  @tracked location = '';
   @tracked notes = '';
 
   get isEmptyField() {
-    return !(this.birdname, this.localization, this.notes);
+    return !(this.birdname, this.location, this.notes);
   }
 
   @action
@@ -27,9 +27,9 @@ export default class ObservationFormComponent extends Component {
   }
 
   @action
-  onLocalizationChange(event) {
-    this.localization = event.target.value;
-    console.log(this.localization);
+  onLocationChange(event) {
+    this.location = event.target.value;
+    console.log(this.location);
   }
 
   @action
@@ -43,7 +43,7 @@ export default class ObservationFormComponent extends Component {
     const observation = {
       date: this.date,
       birdname: this.birdname,
-      localization: this.localization,
+      location: this.location,
       notes: this.notes,
     };
 
@@ -58,7 +58,7 @@ export default class ObservationFormComponent extends Component {
   clear() {
     this.date = '';
     this.birdname = '';
-    this.localization = '';
+    this.location = '';
     this.notes = '';
   }
 }
