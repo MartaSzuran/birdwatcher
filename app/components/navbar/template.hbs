@@ -11,4 +11,11 @@
   <li class='nav-item'>
     <LinkTo @route='home.observation' class='nav-link'>Add obeservation</LinkTo>
   </li>
+  <li class='nav-item'>
+    <span
+      role='button'
+      class='nav-link'
+      {{on 'click' this.onLogout}}
+    >Logout</span>
+  </li>
 </ul>

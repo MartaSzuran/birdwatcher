@@ -1,9 +1,6 @@
 {{page-title 'User'}}
 
-<GeneralContainer>
-  <Navbar />
-  <User::Details @user={{this.model}} />
-  <ShowUserObservations @observations={{this.model.observations}} />
-</GeneralContainer>
+<User::Details @user={{this.model}} />
+<ShowUserObservations @observations={{this.model.observations}} />
 
 {{outlet}}

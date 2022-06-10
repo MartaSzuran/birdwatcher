@@ -1,19 +1,28 @@
 import Controller from '@ember/controller';
 import { action } from '@ember/object';
+import { inject as service } from '@ember/service';
+import { tracked } from '@glimmer/tracking';
 
 export default class LoginController extends Controller {
+  @service store;
+  @service session;
+  @tracked userName;
+  @tracked userPassword;
+
   @action
-  onLoginChange() {
-    console.log('login change');
+  onLoginChange(event) {
+    this.userName = event.target.value;
   }
 
   @action
-  onPasswordChange() {
-    console.log('password change');
+  onPasswordChange(event) {
+    this.userPassword = event.target.value;
   }
 
   @action
-  onSubmit() {
-    console.log('submit change');
+  async onSubmit(event) {
+    event.preventDefault();
+    const { userName, userPassword } = this;
+    await this.session.loggedUser(userName, userPassword);
   }
 }
