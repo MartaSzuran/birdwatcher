@@ -1,2 +1,75 @@
-{{page-title "Register"}}
+{{page-title 'Register'}}
+<GeneralContainer>
+
+  <h1 class='text-center mb-3'>Registration</h1>
+
+  <div class='input-group mb-3'>
+    <span
+      class='input-group-text'
+      id='inputGroup-sizing-default'
+    >Username</span>
+    <input
+      type='username'
+      class='form-control'
+      aria-label='Sizing example input'
+      aria-describedby='inputGroup-sizing-default'
+      value={{this.username}}
+      {{on 'input' this.onUsernameChange}}
+    />
+  </div>
+  <div class='input-group mb-3'>
+    <span class='input-group-text' id='inputGroup-sizing-default'>Email</span>
+    <input
+      type='email'
+      class='form-control'
+      aria-label='Sizing example input'
+      aria-describedby='inputGroup-sizing-default'
+      value={{this.email}}
+      {{on 'input' this.onEmailChange}}
+    />
+  </div>
+  <div class='input-group mb-3'>
+    <span
+      class='input-group-text'
+      id='inputGroup-sizing-default'
+    >Password</span>
+    <input
+      type='password'
+      class='form-control'
+      aria-label='Sizing example input'
+      aria-describedby='inputGroup-sizing-default'
+      value={{this.password}}
+      {{on 'input' this.onPasswordChange}}
+    />
+  </div>
+  <div class='input-group mb-3'>
+    <span
+      class='input-group-text'
+      id='inputGroup-sizing-default'
+    >PhotoURL</span>
+    <input
+      type='photoURL'
+      class='form-control'
+      aria-label='Sizing example input'
+      aria-describedby='inputGroup-sizing-default'
+      value={{this.photoURL}}
+      {{on 'input' this.onPhotoURLChange}}
+    />
+  </div>
+  <div class='mb-3 row'>
+    <div class='d-flex'>
+      <button
+        type='submit'
+        class='btn w-50 btn-lg btn-primary active mr-1'
+        {{on 'click' this.onSubmit}}
+      >Save</button>
+      <button
+        type='button'
+        class='btn w-50 btn-lg btn-primary active mr-1'
+      >Cancel</button>
+    </div>
+  </div>
+
+</GeneralContainer>
+
 {{outlet}}

@@ -17,25 +17,21 @@ export default class ObservationFormComponent extends Component {
   @action
   onDateChange() {
     this.date = document.getElementById('datepicker');
-    console.log(this.date);
   }
 
   @action
   onBirdnameChange(event) {
     this.birdname = event.target.value;
-    console.log(this.birdname);
   }
 
   @action
   onLocationChange(event) {
     this.location = event.target.value;
-    console.log(this.location);
   }
 
   @action
   onNotesChange(event) {
     this.notes = event.target.value;
-    console.log(this.notes);
   }
 
   @action
