@@ -1,5 +1,6 @@
 import Route from '@ember/routing/route';
 import { inject as service } from '@ember/service';
+import moment from 'moment';
 
 export default class ApplicationRoute extends Route {
   @service store;
@@ -34,7 +35,7 @@ export default class ApplicationRoute extends Route {
       id: 1,
       birdname: 'Brodziec piskliwy',
       location: 'Żywiec',
-      date: '29-05-2022',
+      observationDate: moment('2022-05-29').toDate(),
       notes: 'some informations that are important to user/others.',
       owner: user1Model,
     };
@@ -43,7 +44,7 @@ export default class ApplicationRoute extends Route {
       id: 2,
       birdname: 'Sieweczka obrożna',
       location: 'Żywiec',
-      date: '30-05-2022',
+      observationDate: moment('2022-05-30').toDate(),
       notes: 'some informations that are important to user/others.',
       owner: user1Model,
     };
@@ -51,7 +52,7 @@ export default class ApplicationRoute extends Route {
       id: 3,
       birdname: 'Czapla siwa',
       location: 'Bielsko-Biała',
-      date: '31-05-2022',
+      observationDate: moment('2022-06-09').toDate(),
       notes: 'some informations that are important to user/others.',
       owner: user2Model,
     };

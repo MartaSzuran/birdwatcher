@@ -10,7 +10,7 @@
   <tbody>
     {{#each @this.observations as |observation|}}
       <tr>
-        <td>{{observation.date}}</td>
+        <td>{{moment-format observation.observationDate 'DD-MM-YYYY'}}</td>
         <td>{{observation.birdname}}</td>
         <td>{{observation.location}}</td>
         <td>{{observation.notes}}</td>

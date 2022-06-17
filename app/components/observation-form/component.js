@@ -2,11 +2,12 @@ import Component from '@glimmer/component';
 import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 import { inject as service } from '@ember/service';
+import moment from 'moment';
 
 export default class ObservationFormComponent extends Component {
   @service store;
-  @tracked date = '';
   @tracked birdname = '';
+  @tracked observationDate;
   @tracked location = '';
   @tracked notes = '';
 
@@ -15,8 +16,9 @@ export default class ObservationFormComponent extends Component {
   }
 
   @action
-  onDateChange() {
-    this.date = document.getElementById('datepicker');
+  onDateChange(date) {
+    this.observationDate = moment(date).format('YYYY-MM-DD');
+    console.log(this.observationDate);
   }
 
   @action
@@ -37,7 +39,7 @@ export default class ObservationFormComponent extends Component {
   @action
   async onSave() {
     const observation = {
-      date: this.date,
+      date: this.observationDate,
       birdname: this.birdname,
       location: this.location,
       notes: this.notes,
@@ -52,7 +54,7 @@ export default class ObservationFormComponent extends Component {
   }
 
   clear() {
-    this.date = '';
+    this.observationDate = null;
     this.birdname = '';
     this.location = '';
     this.notes = '';

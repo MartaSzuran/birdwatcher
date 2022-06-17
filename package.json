@@ -48,6 +48,7 @@
     "ember-google-maps": "^6.0.0",
     "ember-load-initializers": "^2.1.2",
     "ember-local-storage": "^2.0.1",
+    "ember-moment": "^10.0.0",
     "ember-page-title": "^7.0.0",
     "ember-pikaday": "^4.0.0",
     "ember-qunit": "^5.1.5",
@@ -62,6 +63,7 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-qunit": "^7.2.0",
     "loader.js": "^4.7.0",
+    "moment": "^2.29.3",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.6.1",
     "qunit": "^2.18.0",
@@ -74,5 +76,9 @@
   },
   "ember": {
     "edition": "octane"
+  },
+  "dependencies": {
+    "moment-timezone": "^0.5.34",
+    "pikaday": "^1.8.2"
   }
 }

@@ -2,14 +2,10 @@
 
 <div class='input-group mb-3'>
   <span class='input-group-text' id='inputGroup-sizing-default'>Date</span>
-  <input
-    class='form-control'
-    id='datepicker'
-    {{pikaday
-      format='DD.MM.YYYY'
-      value=this.startDate
-      onSelect=this.setStartDate
-    }}
+  <PikadayInput
+    @format='YYYY-MM-DD'
+    @value={{this.observationDate}}
+    @onSelection={{this.onDateChange}}
   />
 </div>
 <div class='input-group mb-3'>
