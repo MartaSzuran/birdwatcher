@@ -1,3 +1,23 @@
+<span class='date'>
+  <div class='input-group mb-3'>
+    <span class='input-group-text' id='inputGroup-sizing-default'>Date from:</span>
+    <PikadayInput
+      @format='YYYY-MM-DD'
+      @value={{this.observationDate}}
+      @onSelection={{this.onDateChange}}
+    />
+  </div>
+</span>
+<span class='date'>
+  <div class='input-group mb-3'>
+    <span class='input-group-text' id='inputGroup-sizing-default'>Date to:</span>
+    <PikadayInput
+      @format='YYYY-MM-DD'
+      @value={{this.observationDate}}
+      @onSelection={{this.onDateChange}}
+    />
+  </div>
+</span>
 <table class='table table-striped'>
   <thead>
     <tr>
