@@ -5,7 +5,7 @@ import { inject as service } from '@ember/service';
 import moment from 'moment';
 
 export default class ObservationComponent extends Component {
-  @service store;
+  @service filterDates;
   @tracked dateTo;
   @tracked dateFrom;
 
@@ -23,13 +23,9 @@ export default class ObservationComponent extends Component {
 
   @action
   async onSave() {
-    const dateFrom = this.dateFrom;
-    const dateFromModel = this.store.createRecord('dateFrom', dateFrom);
-    const dateTo = this.dateTo;
-    const dateToModel = this.store.createRecord('dateTo', dateTo);
-    await dateFromModel.save();
-    await dateToModel.save();
-    clearFields();
+    await this.filterDates.setStartDate(this.dateFrom);
+    await this.filterDates.setEndDate(this.dateTo);
+    this.clearFields();
   }
 
   clearFields() {
