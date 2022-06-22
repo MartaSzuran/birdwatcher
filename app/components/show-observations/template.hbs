@@ -1,23 +1,25 @@
 <span class='date'>
   <div class='input-group mb-3'>
-    <span class='input-group-text' id='inputGroup-sizing-default'>Date from:</span>
+    <span class='input-group-text' id='inputGroup-sizing-default'>From:</span>
     <PikadayInput
       @format='YYYY-MM-DD'
-      @value={{this.observationDate}}
-      @onSelection={{this.onDateChange}}
+      @value={{this.dateFrom}}
+      @onSelection={{this.onDateFromChange}}
     />
   </div>
 </span>
 <span class='date'>
   <div class='input-group mb-3'>
-    <span class='input-group-text' id='inputGroup-sizing-default'>Date to:</span>
+    <span class='input-group-text' id='inputGroup-sizing-default'>To:</span>
     <PikadayInput
       @format='YYYY-MM-DD'
-      @value={{this.observationDate}}
-      @onSelection={{this.onDateChange}}
+      @value={{this.dateTo}}
+      @onSelection={{this.onDateToChange}}
     />
   </div>
 </span>
+<button type='submit' {{on 'click' this.onSave}}>Search</button>
+
 <table class='table table-striped'>
   <thead>
     <tr>
