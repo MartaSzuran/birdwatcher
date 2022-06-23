@@ -10,7 +10,7 @@ export default class FilterDatesService extends Service {
   }
 
   clearDates() {
-    this.dateEnd = null;
     this.dateStart = null;
+    this.dateEnd = null;
   }
 }
