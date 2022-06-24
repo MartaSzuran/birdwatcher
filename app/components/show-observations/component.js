@@ -5,26 +5,24 @@ import { inject as service } from '@ember/service';
 import moment from 'moment';
 
 export default class ObservationComponent extends Component {
-  @service filterDates;
+  @service filter;
   @tracked dateTo;
   @tracked dateFrom;
 
   @action
   onDateFromChange(date) {
     this.dateFrom = moment(date).format('YYYY-MM-DD');
-    console.log(this.dateFrom);
   }
 
   @action
   onDateToChange(date) {
     this.dateTo = moment(date).format('YYYY-MM-DD');
-    console.log(this.dateTo);
   }
 
   @action
-  async onSave() {
-    await this.filterDates.setStartDate(this.dateFrom);
-    await this.filterDates.setEndDate(this.dateTo);
+  async onSearch() {
+    await this.filter.setStartDate(this.dateFrom);
+    await this.filter.setEndDate(this.dateTo);
     this.clearFields();
   }
 
