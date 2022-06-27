@@ -5,7 +5,7 @@ import moment from 'moment';
 export default class ObservationModel extends Model {
   @attr('string') birdname;
   @attr('date', { defaultValue: () => moment().format('YYYY-MM-DD') })
-  date;
+  observationDate;
   @attr('string') location;
   @attr('string') notes;
 

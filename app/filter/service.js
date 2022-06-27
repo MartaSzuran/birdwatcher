@@ -9,12 +9,10 @@ export default class FilterService extends Service {
 
   setStartDate(date) {
     this.startDate = moment(date).format('YYYY-MM-DD');
-    console.log(this.startDate);
   }
 
   setEndDate(date) {
     this.endDate = moment(date).format('YYYY-MM-DD');
-    console.log(this.endDate);
   }
 
   clearDates() {

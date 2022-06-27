@@ -35,7 +35,7 @@ export default class ApplicationRoute extends Route {
       id: 1,
       birdname: 'Brodziec piskliwy',
       location: 'Żywiec',
-      observationDate: moment('2022-05-29').toDate(),
+      observationDate: moment('2022-06-01').toDate(),
       notes: 'some informations that are important to user/others.',
       owner: user1Model,
     };
@@ -44,7 +44,7 @@ export default class ApplicationRoute extends Route {
       id: 2,
       birdname: 'Sieweczka obrożna',
       location: 'Żywiec',
-      observationDate: moment('2022-05-30').toDate(),
+      observationDate: moment('2022-06-02').toDate(),
       notes: 'some informations that are important to user/others.',
       owner: user1Model,
     };
@@ -52,7 +52,7 @@ export default class ApplicationRoute extends Route {
       id: 3,
       birdname: 'Czapla siwa',
       location: 'Bielsko-Biała',
-      observationDate: moment('2022-06-09').toDate(),
+      observationDate: moment('2022-06-05').toDate(),
       notes: 'some informations that are important to user/others.',
       owner: user2Model,
     };

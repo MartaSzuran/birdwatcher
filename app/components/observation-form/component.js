@@ -8,7 +8,7 @@ import moment from 'moment';
 export default class ObservationFormComponent extends Component {
   @service store;
   @tracked birdname = '';
-  @tracked observationDate;
+  @tracked obserDate;
   @tracked location = '';
   @tracked notes = '';
 
@@ -18,8 +18,7 @@ export default class ObservationFormComponent extends Component {
 
   @action
   onDateChange(date) {
-    this.observationDate = moment(date).format('YYYY-MM-DD');
-    console.log(this.observationDate);
+    this.obserDate = moment(date).toDate();
   }
 
   @action
@@ -40,7 +39,7 @@ export default class ObservationFormComponent extends Component {
   @action
   async onSave() {
     const observation = {
-      date: this.observationDate,
+      observationDate: this.obserDate,
       birdname: this.birdname,
       location: this.location,
       notes: this.notes,
@@ -55,7 +54,7 @@ export default class ObservationFormComponent extends Component {
   }
 
   clear() {
-    this.observationDate = null;
+    this.obserDate = null;
     this.birdname = '';
     this.location = '';
     this.notes = '';
