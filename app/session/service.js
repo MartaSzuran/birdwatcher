@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import Service from '@ember/service';
 import { storageFor } from 'ember-local-storage';
 import { inject as service } from '@ember/service';

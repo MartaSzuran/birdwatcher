@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import StorageObject from 'ember-local-storage/local/object';
 
 const Storage = StorageObject.extend();

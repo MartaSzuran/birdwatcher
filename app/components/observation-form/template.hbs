@@ -1,7 +1,7 @@
 <h1 class='text-center mb-3'>Add observation</h1>
 
 <div class='input-group mb-3'>
-  <span class='input-group-text' id='inputGroup-sizing-default'>Date</span>
+  <span class='input-group-text' name='inputGroup-sizing-default'>Date</span>
   <PikadayInput
     @format='YYYY-MM-DD'
     @value={{this.observationDate}}
@@ -9,7 +9,7 @@
   />
 </div>
 <div class='input-group mb-3'>
-  <span class='input-group-text' id='inputGroup-sizing-default'>Bird</span>
+  <span class='input-group-text' name='inputGroup-sizing-default'>Bird</span>
   <input
     type='birdname'
     class='form-control'
@@ -20,7 +20,10 @@
   />
 </div>
 <div class='input-group mb-3'>
-  <span class='input-group-text' id='inputGroup-sizing-default'>Location</span>
+  <span
+    class='input-group-text'
+    name='inputGroup-sizing-default'
+  >Location</span>
   <input
     type='location'
     class='form-control'
@@ -32,7 +35,7 @@
 </div>
 
 <div class='input-group mb-3'>
-  <span class='input-group-text' id='inputGroup-sizing-default'>Notes</span>
+  <span class='input-group-text' name='inputGroup-sizing-default'>Notes</span>
   <textarea
     class='form-control'
     id='exampleFormControlTextarea1'

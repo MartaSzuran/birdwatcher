@@ -37,7 +37,7 @@ $mynewcolor: #77cccc;
 
 }
 
-.input-group>.inputGroup-sizing-default {
+.input-group>#inputGroup-sizing-default {
   flex: 0 0 30%;
 }
 
@@ -53,4 +53,9 @@ $mynewcolor: #77cccc;
 
 .date>.input-group .input-group-text {
   width:auto;
+}
+
+.card.mx-auto {
+  width: 18rem;
+  margin-top: 30px;
 }
