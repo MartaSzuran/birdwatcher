@@ -45,13 +45,20 @@ export default class HomeObservationsController extends Controller {
     this.secondDate = moment(newSecondDate).toDate();
   }
 
-  get filterBetweenDates() {
+  get filtedDates() {
     let observations = this.model;
+
     if (this.checkFilterBetweenDates) {
       return observations.filter((observation) => {
         return moment(observation.observationDate).isBetween(this.firstDate, this.secondDate, undefined, '[]');
       });
     };
+
+    if (this.checkFilterFromDate) {
+      return observations.filter((observation) => {
+        return moment(observation.observationDate).isSameOrAfter(this.firstDate);
+      })
+    }
     return observations;
 
   }
