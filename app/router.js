@@ -15,3 +15,4 @@ Router.map(function () {
   this.route('register');
   this.route('login');
 });
+

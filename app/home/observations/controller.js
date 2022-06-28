@@ -2,60 +2,64 @@ import Controller from '@ember/controller';
 import { tracked } from "@glimmer/tracking";
 import { inject as service} from '@ember/service';
 import moment from 'moment';
+import { action } from '@ember/object';
 
 export default class HomeObservationsController extends Controller {
-  @service filter;
   @service store;
   @tracked firstDate;
   @tracked secondDate;
   
   queryParams = ['firstDate', 'secondDate'];
 
+  constructor() {
+    super(...arguments);
+  }
+
   get checkFilterBetweenDates() {
-    return Boolean(this.filter.startDate && this.filter.endDate);
+    return Boolean(this.firstDate && this.secondDate);
   }
   
   get checkFilterFromDate() {
-    return !(this.checkFilterBetweenDates) && Boolean(this.filter.startDate);
+    return !(this.checkFilterBetweenDates) && Boolean(this.firstDate);
   }
   
   get checkFilterToDate() {
-    return !(this.checkFilterBetweenDates) && Boolean(this.filter.endDate);
-  }
-  
-  get getFirstDateToFilter () {
-    this.firstDate = this.filter.startDate;
-    return this.firstDate;
+    return !(this.checkFilterBetweenDates) && Boolean(this.secondDate);
   }
 
-  get getSecondDateToFilter () {
-    this.secondDate = this.filter.endDate;
-    return this.secondDate;
-  }
-
-  get setFirstDate() {
-    if (!this.firstDate) {
+  @action 
+  setFirstDate(date) {
+    const newFirstDate = date;
+    if (!newFirstDate) {
       return null;
     }
-    return moment(this.firstDate).toDate();
+    this.firstDate = moment(newFirstDate).toDate();
   }
 
-  get setSecondDate() {
-    if (!this.secondDate) {
+  @action 
+  setSecondDate(date) {
+    const newSecondDate = date;
+    if (!newSecondDate) {
       return null;
     }
-    return moment(this.secondDate).toDate();
+    this.secondDate = moment(newSecondDate).toDate();
   }
 
   get filterBetweenDates() {
     let observations = this.model;
     if (this.checkFilterBetweenDates) {
       return observations.filter((observation) => {
-        return moment(observation.observationDate).isBetween(this.setFirstDate, this.setSecondDate, undefined, '[]');
+        return moment(observation.observationDate).isBetween(this.firstDate, this.secondDate, undefined, '[]');
       });
     };
     return observations;
 
+  }
+
+  @action 
+  clearFiltersDates() {
+    this.firstDate = null;
+    this.secondDate = null;
   }
 
 }
