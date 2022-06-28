@@ -59,6 +59,12 @@ export default class HomeObservationsController extends Controller {
         return moment(observation.observationDate).isSameOrAfter(this.firstDate);
       })
     }
+
+    if (this.checkFilterToDate) {
+      return observations.filter((observation) => {
+        return moment(observation.observationDate).isSameOrBefore(this.secondDate);
+      })
+    }
     return observations;
 
   }
