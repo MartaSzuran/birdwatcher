@@ -3,7 +3,7 @@ import { tracked } from "@glimmer/tracking";
 import { inject as service} from '@ember/service';
 import moment from 'moment';
 
-export default class ObservationsController extends Controller{
+export default class HomeObservationsController extends Controller {
   @service filter;
   @service store;
   @tracked firstDate;
@@ -55,6 +55,7 @@ export default class ObservationsController extends Controller{
       });
     };
     return observations;
+
   }
 
 }
