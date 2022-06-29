@@ -1,10 +1,11 @@
 import Controller from '@ember/controller';
-import { tracked } from "@glimmer/tracking";
-import { inject as service} from '@ember/service';
-import moment from 'moment';
+import {inject as service} from '@ember/service';
+import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
+import moment from 'moment';
 
-export default class HomeObservationsController extends Controller {
+
+export default class HomeUserController extends Controller {
   @service store;
   @tracked firstDate;
   @tracked secondDate;
@@ -28,7 +29,7 @@ export default class HomeObservationsController extends Controller {
   }
 
   get filteredDates() {
-    let observations = this.model;
+    let observations = this.model.observations;
 
     if (this.checkFilterBetweenDates) {
       return observations.filter((observation) => {
@@ -85,5 +86,4 @@ export default class HomeObservationsController extends Controller {
     this.firstDate = null;
     this.secondDate = null;
   }
-
 }

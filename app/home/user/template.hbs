@@ -1,6 +1,11 @@
 {{page-title 'User'}}
 
 <User::Details @user={{this.model}} />
-<ShowObservations @observations={{this.model.observations}} />
+<ShowObservations 
+  @observations={{this.filteredDates}}
+  @setFirstDate={{this.setFirstDate}} 
+  @setSecondDate={{this.setSecondDate}}
+  @clearFiltersDates={{this.clearFiltersDates}}
+  @sortByBirdname={{this.sortByBirdname}} />
 
 {{outlet}}
