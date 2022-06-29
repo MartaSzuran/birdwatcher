@@ -18,7 +18,18 @@
     />
   </div>
 </span>
-<button type='submit' {{on 'click' this.clearFields}}>Clear</button>
+<button
+  type='button'
+  class='btn btn-secondary'
+  {{on 'click' this.sortToggle}}
+  >Sort by birdname {{this.sortArrow}}
+</button>
+<button
+  type='button'
+  class='reset btn btn-danger'
+  {{on 'click' this.clearFields}}
+  >Clear
+</button>
 
 <table class='table table-striped'>
   <thead>

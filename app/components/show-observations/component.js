@@ -7,6 +7,29 @@ import moment from 'moment';
 export default class ObservationComponent extends Component {
   @tracked dateTo;
   @tracked dateFrom;
+  @tracked sort = '';
+
+  get sortArrow() {
+    if (!this.sort) {
+      return '';
+    }
+    return this.sort === 'ASC' ? '↓a' : '↑z';
+  }
+
+  @action
+  sortToggle() {
+    if (!this.sort) {
+      this.args.sortByBirdname('ASC');
+      return this.sort = 'ASC';
+    };
+
+    if (this.sort === 'ASC') {
+      this.args.sortByBirdname('DESC');
+      return this.sort = 'DESC';
+    };
+
+    this.sort = '';
+  }
 
   @action
   onDateFromChange(date) {
