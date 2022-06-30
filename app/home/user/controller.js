@@ -9,6 +9,7 @@ export default class HomeUserController extends Controller {
   @service store;
   @tracked firstDate;
   @tracked secondDate;
+  @tracked sortParam;
   
   queryParams = ['firstDate', 'secondDate'];
 
@@ -28,7 +29,7 @@ export default class HomeUserController extends Controller {
     return !(this.checkFilterBetweenDates) && Boolean(this.secondDate);
   }
 
-  get filteredDates() {
+  get filteredObservations() {
     let observations = this.model.observations;
 
     if (this.checkFilterBetweenDates) {
@@ -52,15 +53,19 @@ export default class HomeUserController extends Controller {
 
   }
 
-  @action
-  sortByBirdname(sortParam) {
-    if (sortParam === 'ASC') {
-      // console.log('mam cie');
+  get sortByBirdname () {
+    if (this.sortParam === 'ASC') {
+      return this.filteredObservations.sortBy('birdname');
     }
+    if (this.sortParam === 'DESC') {
+      return this.filteredObservations.sortBy('birdname').reverse();
+    }
+    return this.filteredObservations;
+  }
 
-    if (sortParam === 'DESC') {
-      // console.log('mam ciebie też');
-    }
+  @action
+  setSortParam(sortParam) {
+    this.sortParam = sortParam;
   }
 
   @action 
