@@ -3,11 +3,14 @@ import { tracked } from "@glimmer/tracking";
 import { inject as service} from '@ember/service';
 import moment from 'moment';
 import { action } from '@ember/object';
+import { sort } from '@ember/object/computed';
+import { set } from '@ember/object';
 
 export default class HomeObservationsController extends Controller {
   @service store;
   @tracked firstDate;
   @tracked secondDate;
+  @tracked sortParam;
   
   queryParams = ['firstDate', 'secondDate'];
 
@@ -27,7 +30,7 @@ export default class HomeObservationsController extends Controller {
     return !(this.checkFilterBetweenDates) && Boolean(this.secondDate);
   }
 
-  get filteredDates() {
+  get filteredObservations() {
     let observations = this.model;
 
     if (this.checkFilterBetweenDates) {
@@ -51,17 +54,21 @@ export default class HomeObservationsController extends Controller {
 
   }
 
-  @action
-  sortByBirdname(sortParam) {
-    if (sortParam === 'ASC') {
-      // console.log('mam cie');
+  get sortByBirdname () {
+    if (this.sortParam === 'ASC') {
+      return this.filteredObservations.sortBy('birdname');
     }
-
-    if (sortParam === 'DESC') {
-      // console.log('mam ciebie też');
+    if (this.sortParam === 'DESC') {
+      return this.filteredObservations.sortBy('birdname').reverse();
     }
+    return this.filteredObservations;
   }
 
+  @action
+  setSortParam(sortParam) {
+    this.sortParam = sortParam;
+  }
+  
   @action 
   setFirstDate(date) {
     const newFirstDate = date;

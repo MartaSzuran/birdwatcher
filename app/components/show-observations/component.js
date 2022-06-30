@@ -19,12 +19,12 @@ export default class ObservationComponent extends Component {
   @action
   sortToggle() {
     if (!this.sort) {
-      this.args.sortByBirdname('ASC');
+      this.args.sortParam('ASC');
       return this.sort = 'ASC';
     };
 
     if (this.sort === 'ASC') {
-      this.args.sortByBirdname('DESC');
+      this.args.sortParam('DESC');
       return this.sort = 'DESC';
     };
 
