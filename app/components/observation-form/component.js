@@ -6,6 +6,7 @@ import { inject as service } from '@ember/service';
 import moment from 'moment';
 
 export default class ObservationFormComponent extends Component {
+  @service session;
   @service store;
   @tracked birdname = '';
   @tracked obserDate;
@@ -43,6 +44,7 @@ export default class ObservationFormComponent extends Component {
       birdname: this.birdname,
       location: this.location,
       notes: this.notes,
+      owner: this.session.currentUser,
     };
 
     const observationModel = this.store.createRecord(

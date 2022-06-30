@@ -3,8 +3,6 @@ import { tracked } from "@glimmer/tracking";
 import { inject as service} from '@ember/service';
 import moment from 'moment';
 import { action } from '@ember/object';
-import { sort } from '@ember/object/computed';
-import { set } from '@ember/object';
 
 export default class HomeObservationsController extends Controller {
   @service store;
