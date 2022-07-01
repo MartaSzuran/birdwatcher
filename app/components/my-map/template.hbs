@@ -1,0 +1,16 @@
+<GMap
+  @lat="49.668437"
+  @lng="19.189728"
+  @zoom={{12}}
+  @styles={{this.myMapStyle}}
+  @minZoom={{10}}
+  @panControl={{false}}
+  @streetViewControl={{false}} as |map|>
+
+  {{#each @locations as |location|}}
+    <map.marker
+      @lat={{location.lat}}
+      @lng={{location.lng}}
+      @draggable={{true}}/>
+  {{/each}}
+</GMap>
