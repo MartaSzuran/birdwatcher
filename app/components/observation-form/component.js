@@ -42,7 +42,7 @@ export default class ObservationFormComponent extends Component {
     const observation = {
       observationDate: this.obserDate,
       birdname: this.birdname,
-      location: this.location,
+      locationCity: this.location,
       notes: this.notes,
       owner: this.session.currentUser,
     };

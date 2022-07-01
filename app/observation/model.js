@@ -6,7 +6,7 @@ export default class ObservationModel extends Model {
   @attr('string') birdname;
   @attr('date', { defaultValue: () => moment().format('YYYY-MM-DD') })
   observationDate;
-  @attr('string') location;
+  @attr('string') locationCity;
   @attr('string') notes;
 
   @belongsTo('user') owner;
