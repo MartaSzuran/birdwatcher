@@ -4,7 +4,7 @@
 
 const path = require('path');
 
-module.exports = function (env) {
+module.exports = function () {
   return {
     clientAllowedKeys: ['GOOGLE_MAPS_API_KEY'],
     fastbootAllowedKeys: [],

@@ -1,5 +1,5 @@
 import Controller from '@ember/controller';
-import {inject as service} from '@ember/service';
+import { inject as service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 import moment from 'moment';
@@ -9,19 +9,19 @@ export default class HomeUserController extends Controller {
   @tracked firstDate;
   @tracked secondDate;
   @tracked sortParam;
-  
+
   queryParams = ['firstDate', 'secondDate'];
 
   get checkFilterBetweenDates() {
     return Boolean(this.firstDate && this.secondDate);
   }
-  
+
   get checkFilterFromDate() {
-    return !(this.checkFilterBetweenDates) && Boolean(this.firstDate);
+    return !this.checkFilterBetweenDates && Boolean(this.firstDate);
   }
-  
+
   get checkFilterToDate() {
-    return !(this.checkFilterBetweenDates) && Boolean(this.secondDate);
+    return !this.checkFilterBetweenDates && Boolean(this.secondDate);
   }
 
   get filteredObservations() {
@@ -29,25 +29,34 @@ export default class HomeUserController extends Controller {
 
     if (this.checkFilterBetweenDates) {
       return observations.filter((observation) => {
-        return moment(observation.observationDate).isBetween(this.firstDate, this.secondDate, undefined, '[]');
+        return moment(observation.observationDate).isBetween(
+          this.firstDate,
+          this.secondDate,
+          undefined,
+          '[]'
+        );
       });
-    };
+    }
 
     if (this.checkFilterFromDate) {
       return observations.filter((observation) => {
-        return moment(observation.observationDate).isSameOrAfter(this.firstDate);
-      })
+        return moment(observation.observationDate).isSameOrAfter(
+          this.firstDate
+        );
+      });
     }
 
     if (this.checkFilterToDate) {
       return observations.filter((observation) => {
-        return moment(observation.observationDate).isSameOrBefore(this.secondDate);
-      })
+        return moment(observation.observationDate).isSameOrBefore(
+          this.secondDate
+        );
+      });
     }
     return observations;
   }
 
-  get sortByBirdname () {
+  get sortByBirdname() {
     if (this.sortParam === 'ASC') {
       return this.filteredObservations.sortBy('birdname');
     }
@@ -62,7 +71,7 @@ export default class HomeUserController extends Controller {
     this.sortParam = sortParam;
   }
 
-  @action 
+  @action
   setFirstDate(date) {
     const newFirstDate = date;
     if (!newFirstDate) {
@@ -71,7 +80,7 @@ export default class HomeUserController extends Controller {
     this.firstDate = moment(newFirstDate).toDate();
   }
 
-  @action 
+  @action
   setSecondDate(date) {
     const newSecondDate = date;
     if (!newSecondDate) {
@@ -80,7 +89,7 @@ export default class HomeUserController extends Controller {
     this.secondDate = moment(newSecondDate).toDate();
   }
 
-  @action 
+  @action
   clearFiltersDates() {
     this.firstDate = null;
     this.secondDate = null;
