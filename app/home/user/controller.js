@@ -4,7 +4,6 @@ import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 import moment from 'moment';
 
-
 export default class HomeUserController extends Controller {
   @service store;
   @tracked firstDate;
@@ -12,10 +11,6 @@ export default class HomeUserController extends Controller {
   @tracked sortParam;
   
   queryParams = ['firstDate', 'secondDate'];
-
-  constructor() {
-    super(...arguments);
-  }
 
   get checkFilterBetweenDates() {
     return Boolean(this.firstDate && this.secondDate);
@@ -50,7 +45,6 @@ export default class HomeUserController extends Controller {
       })
     }
     return observations;
-
   }
 
   get sortByBirdname () {
