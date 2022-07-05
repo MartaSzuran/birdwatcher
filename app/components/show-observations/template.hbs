@@ -22,13 +22,14 @@
   type='button'
   class='btn btn-secondary'
   {{on 'click' this.sortToggle}}
-  >Sort by birdname {{this.sortArrow}}
+>Sort by birdname
+  {{this.sortArrow}}
 </button>
 <button
   type='button'
   class='reset btn btn-danger'
   {{on 'click' this.clearFields}}
-  >Clear
+>Clear
 </button>
 
 <table class='table table-striped'>
@@ -36,7 +37,8 @@
     <tr>
       <th scope='col'>Date</th>
       <th scope='col'>Bird name</th>
-      <th scope='col'>Location</th>
+      <th scope='col'>Latitude</th>
+      <th scope='col'>Longitude</th>
       <th scope='col'>Notes</th>
     </tr>
   </thead>
@@ -45,7 +47,8 @@
       <tr>
         <td>{{moment-format observation.observationDate 'DD-MM-YYYY'}}</td>
         <td>{{observation.birdname}}</td>
-        <td>{{observation.location}}</td>
+        <td>{{observation.latLocation}}</td>
+        <td>{{observation.lngLocation}}</td>
         <td>{{observation.notes}}</td>
       </tr>
     {{/each}}

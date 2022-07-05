@@ -2,9 +2,11 @@ import Component from '@glimmer/component';
 import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 
-export default class MyMapComponent extends Component {
+export default class MyMapAddObservationComponent extends Component {
   @tracked isOpenLocationId = null;
   @tracked position;
+  @tracked latLocation;
+  @tracked lngLocation;
 
   @action
   markerTooltipOpen(location) {
@@ -16,7 +18,9 @@ export default class MyMapComponent extends Component {
 
   @action
   onClick(event) {
-    const myNewEventObj = event;
-    console.log(myNewEventObj.googleEvent.xb.x);
+    this.latLocation = event.googleEvent.latLng.lat();
+    this.lngLocation = event.googleEvent.latLng.lng();
+    this.args.onLatLocationChange(this.latLocation);
+    this.args.onLngLocationChange(this.lngLocation);
   }
 }

@@ -10,11 +10,28 @@ export default class ObservationFormComponent extends Component {
   @service store;
   @tracked birdname = '';
   @tracked obserDate;
-  @tracked location = '';
+  @tracked latLocation = '';
+  @tracked lngLocation = '';
+  @tracked locations = '';
   @tracked notes = '';
+  @tracked isShowModal = false;
 
   get isEmptyField() {
-    return !(this.birdname && this.location && this.notes);
+    return !(
+      this.birdname &&
+      this.latLocation &&
+      this.lngLocation &&
+      this.notes
+    );
+  }
+
+  @action
+  location() {
+    if (this.latLocation && this.lngLocation) {
+      this.hideModal();
+      this.locations = `latitude: ${this.latLocation} / longitude: ${this.lngLocation}`;
+    }
+    return this.locations;
   }
 
   @action
@@ -28,8 +45,15 @@ export default class ObservationFormComponent extends Component {
   }
 
   @action
-  onLocationChange(event) {
-    this.location = event.target.value;
+  onLatLocationChange(location) {
+    this.latLocation = location;
+    this.location();
+  }
+
+  @action
+  onLngLocationChange(location) {
+    this.lngLocation = location;
+    this.location();
   }
 
   @action
@@ -42,7 +66,8 @@ export default class ObservationFormComponent extends Component {
     const observation = {
       observationDate: this.obserDate,
       birdname: this.birdname,
-      locationCity: this.location,
+      latLocation: this.latLocation,
+      lngLocation: this.lngLocation,
       notes: this.notes,
       owner: this.session.currentUser,
     };
@@ -55,10 +80,22 @@ export default class ObservationFormComponent extends Component {
     this.clear();
   }
 
+  @action
+  showModal() {
+    this.isShowModal = true;
+  }
+
+  @action
+  hideModal() {
+    if (this.latLocation && this.lngLocation) {
+      this.isShowModal = false;
+    }
+  }
+
   clear() {
     this.obserDate = null;
     this.birdname = '';
-    this.location = '';
+    this.locations = '';
     this.notes = '';
   }
 }

@@ -9,18 +9,18 @@
   as |map|
 >
 
-  {{#each @locations as |location|}}
+  {{#each @observations as |observation|}}
     <map.marker
-      @lat={{location.lat}}
-      @lng={{location.lng}}
+      @lat={{observation.latLocation}}
+      @lng={{observation.lngLocation}}
       @draggable={{true}}
-      @onClick={{fn this.markerTooltipOpen location}}
+      @onClick={{fn this.markerTooltipOpen observation}}
       as |marker|
     >
-      <marker.infoWindow @isOpen={{eq location.id this.isOpenLocationId}}>
+      <marker.infoWindow @isOpen={{eq observation.id this.isOpenLocationId}}>
         <div class='text-center'>
           <div>
-            {{location.observation.birdname}}
+            {{observation.birdname}}
           </div>
         </div>
       </marker.infoWindow>

@@ -6,18 +6,5 @@
   @minZoom={{10}}
   @panControl={{false}}
   @streetViewControl={{false}}
-  @onceOnIdle={{this.didLoadMap}}
   @onClick={{this.onClick}}
-  as |map|
->
-
-  {{#each @locations as |location|}}
-    <map.marker
-      @lat={{location.lat}}
-      @lng={{location.lng}}
-      @draggable={{true}}
-      @onClick={{fn this.markerTooltipOpen location}}
-    />
-
-  {{/each}}
-</GMap>
+/>

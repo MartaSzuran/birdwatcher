@@ -6,7 +6,7 @@ export default class IndexRoute extends Route {
   @service store;
 
   model() {
-    const locations = this.store.findAll('location');
-    return locations;
+    const observations = this.store.findAll('observation');
+    return observations;
   }
 }
