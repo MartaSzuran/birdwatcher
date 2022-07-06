@@ -10,8 +10,8 @@ export default class ObservationFormComponent extends Component {
   @service store;
   @tracked birdname = '';
   @tracked obserDate;
-  @tracked latLocation = '';
-  @tracked lngLocation = '';
+  @tracked latLocation;
+  @tracked lngLocation;
   @tracked locations = '';
   @tracked notes = '';
   @tracked isShowModal = false;
@@ -29,7 +29,9 @@ export default class ObservationFormComponent extends Component {
   location() {
     if (this.latLocation && this.lngLocation) {
       this.hideModal();
-      this.locations = `latitude: ${this.latLocation} / longitude: ${this.lngLocation}`;
+      this.locations = `latitude: ${this.latLocation.toFixed(
+        6
+      )} / longitude: ${this.lngLocation.toFixed(6)}`;
     }
     return this.locations;
   }
@@ -66,8 +68,8 @@ export default class ObservationFormComponent extends Component {
     const observation = {
       observationDate: this.obserDate,
       birdname: this.birdname,
-      latLocation: this.latLocation,
-      lngLocation: this.lngLocation,
+      latLocation: this.latLocation.toFixed(6),
+      lngLocation: this.lngLocation.toFixed(6),
       notes: this.notes,
       owner: this.session.currentUser,
     };
