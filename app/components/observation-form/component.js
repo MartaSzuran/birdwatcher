@@ -94,6 +94,7 @@ export default class ObservationFormComponent extends Component {
     }
   }
 
+  @action
   clear() {
     this.obserDate = null;
     this.birdname = '';
