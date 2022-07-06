@@ -20,15 +20,18 @@ export default class ObservationComponent extends Component {
   sortToggle() {
     if (!this.sort) {
       this.args.sortParam('ASC');
-      return this.sort = 'ASC';
-    };
+      return (this.sort = 'ASC');
+    }
 
     if (this.sort === 'ASC') {
       this.args.sortParam('DESC');
-      return this.sort = 'DESC';
-    };
+      return (this.sort = 'DESC');
+    }
 
-    this.sort = '';
+    if (this.sort === 'DESC') {
+      this.args.sortParam('');
+      return (this.sort = '');
+    }
   }
 
   @action
@@ -43,11 +46,10 @@ export default class ObservationComponent extends Component {
     this.args.setSecondDate(this.dateTo);
   }
 
-  @action 
+  @action
   clearFields() {
     this.dateTo = null;
     this.dateFrom = null;
     this.args.clearFiltersDates();
   }
-
 }

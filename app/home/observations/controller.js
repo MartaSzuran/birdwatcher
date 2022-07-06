@@ -6,7 +6,7 @@ export default class HomeObservationsController extends HomeUserController {
     let observations = this.model;
 
     if (this.checkFilterBetweenDates) {
-      return observations.filter((observation) => {
+      observations = observations.filter((observation) => {
         return moment(observation.observationDate).isBetween(
           this.firstDate,
           this.secondDate,
@@ -14,23 +14,26 @@ export default class HomeObservationsController extends HomeUserController {
           '[]'
         );
       });
+      return observations.sortBy('convertToMiliseconds');
     }
 
     if (this.checkFilterFromDate) {
-      return observations.filter((observation) => {
+      observations = observations.filter((observation) => {
         return moment(observation.observationDate).isSameOrAfter(
           this.firstDate
         );
       });
+      return observations.sortBy('convertToMiliseconds');
     }
 
     if (this.checkFilterToDate) {
-      return observations.filter((observation) => {
+      observations = observations.filter((observation) => {
         return moment(observation.observationDate).isSameOrBefore(
           this.secondDate
         );
       });
+      return observations.sortBy('convertToMiliseconds');
     }
-    return observations;
+    return observations.sortBy('convertToMiliseconds');
   }
 }

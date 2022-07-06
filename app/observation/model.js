@@ -11,4 +11,8 @@ export default class ObservationModel extends Model {
   @attr('string') notes;
 
   @belongsTo('user') owner;
+
+  get convertToMiliseconds() {
+    return new Date(this.observationDate).getTime();
+  }
 }

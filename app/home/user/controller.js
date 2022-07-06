@@ -10,7 +10,7 @@ export default class HomeUserController extends Controller {
   @tracked secondDate;
   @tracked sortParam;
 
-  queryParams = ['firstDate', 'secondDate'];
+  queryParams = ['firstDate', 'secondDate', 'sortParam'];
 
   get checkFilterBetweenDates() {
     return Boolean(this.firstDate && this.secondDate);
@@ -28,7 +28,7 @@ export default class HomeUserController extends Controller {
     let observations = this.model.observations;
 
     if (this.checkFilterBetweenDates) {
-      return observations.filter((observation) => {
+      observations = observations.filter((observation) => {
         return moment(observation.observationDate).isBetween(
           this.firstDate,
           this.secondDate,
@@ -36,34 +36,38 @@ export default class HomeUserController extends Controller {
           '[]'
         );
       });
+      return observations.sortBy('convertToMiliseconds');
     }
 
     if (this.checkFilterFromDate) {
-      return observations.filter((observation) => {
+      observations = observations.filter((observation) => {
         return moment(observation.observationDate).isSameOrAfter(
           this.firstDate
         );
       });
+      return observations.sortBy('convertToMiliseconds');
     }
 
     if (this.checkFilterToDate) {
-      return observations.filter((observation) => {
+      observations = observations.filter((observation) => {
         return moment(observation.observationDate).isSameOrBefore(
           this.secondDate
         );
       });
+      return observations.sortBy('convertToMiliseconds');
     }
-    return observations;
+    return observations.sortBy('convertToMiliseconds');
   }
 
   get sortByBirdname() {
+    let listOfObservations = this.filteredObservations;
     if (this.sortParam === 'ASC') {
-      return this.filteredObservations.sortBy('birdname');
+      return listOfObservations.sortBy('birdname');
     }
     if (this.sortParam === 'DESC') {
-      return this.filteredObservations.sortBy('birdname').reverse();
+      return listOfObservations.sortBy('birdname').reverse();
     }
-    return this.filteredObservations;
+    return listOfObservations;
   }
 
   @action
@@ -73,19 +77,21 @@ export default class HomeUserController extends Controller {
 
   @action
   setFirstDate(date) {
-    const newFirstDate = date;
+    let newFirstDate = date;
     if (!newFirstDate) {
       return null;
     }
+    newFirstDate = moment(newFirstDate).startOf('day');
     this.firstDate = moment(newFirstDate).toDate();
   }
 
   @action
   setSecondDate(date) {
-    const newSecondDate = date;
+    let newSecondDate = date;
     if (!newSecondDate) {
       return null;
     }
+    newSecondDate = moment(newSecondDate).endOf('day');
     this.secondDate = moment(newSecondDate).toDate();
   }
 
