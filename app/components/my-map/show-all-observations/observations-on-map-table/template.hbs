@@ -1,0 +1,19 @@
+<table class='table table-striped table-hover caption-top'>
+  <caption>List of observations</caption>
+  <thead class='table-info text-align:center'>
+    <tr class='table-info'>
+      <th scope='col'>Date</th>
+      <th scope='col'>Birdname</th>
+      <th scope='col'>Observator</th>
+    </tr>
+  </thead>
+  <tbody class='table-info'>
+    {{#each @observations as |observation|}}
+      <tr class='table-info'>
+        <td>{{moment-format observation.observationDate 'DD-MM-YYYY'}}</td>
+        <td>{{observation.birdname}}</td>
+        <td>{{observation.owner.username}}</td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>

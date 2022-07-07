@@ -7,8 +7,13 @@
   @minZoom={{10}}
   @panControl={{false}}
   @streetViewControl={{false}}
+  @onceOnIdle={{this.saveBounds}}
+  @onBoundsChanged={{this.saveBounds}}
   as |map|
 >
+  <MyMap::ShowAllObservations::ObservationsOnMapTable
+    @observations={{this.currentMapObservations}}
+  />
 
   {{#each @observations as |observation|}}
     <map.marker
