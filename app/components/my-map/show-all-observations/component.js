@@ -10,29 +10,35 @@ export default class MyMapShowAllObservationsObservationOnMapTableComponent exte
   @tracked latBounds;
   @tracked lngBounds;
 
-  get currentMapObservations() {
-    let observations = this.args.observations;
-    observations = observations.filter((element) => {
-      this.checkLocation(element);
-    });
-    return observations;
-  }
+  // get currentMapObservations() {
+  //   let observations = this.args.observations;
+  //   observations = observations.filter((element) => {
+  //     if (this.saveBounds) {
+  //       // console.log(element);
+  //       return this.checkLocation(element);
+  //     }
+  //   });
+  //   return observations;
+  // }
 
-  checkLocation(element) {
-    if (
-      element.latLocation >= this.latBounds[0] &&
-      element.latLocation <= this.latBounds[1] &&
-      element.lngLocation >= this.lngBounds[0] &&
-      element.lngLocation <= this.lngBounds[1]
-    ) {
-      return element;
-    }
-  }
+  // checkLocation(element) {
+  //   if (
+  //     element.latLocation >= this.latBounds[0] &&
+  //     element.latLocation <= this.latBounds[1] &&
+  //     element.lngLocation >= this.lngBounds[0] &&
+  //     element.lngLocation <= this.lngBounds[1]
+  //   ) {
+  //     return element;
+  //   }
+  // }
 
   @action
   saveBounds(event) {
     let bounds = event.map.getBounds();
-    // console.log(bounds);
+    if (!bounds) {
+      console.log('no bounds');
+      return null;
+    }
     this.latBounds = [bounds.wb.lo, bounds.wb.hi];
     this.lngBounds = [bounds.Ra.lo, bounds.Ra.hi];
     // console.log(this.latBounds);
@@ -42,7 +48,14 @@ export default class MyMapShowAllObservationsObservationOnMapTableComponent exte
   @action
   markerTooltipOpen(observation) {
     if (this.isOpenObservationId) {
-      return (this.isOpenObservationId = null);
+      if (this.isOpenObservationId !== observation.get('id')) {
+        this.isOpenObservationId = observation.get('id');
+        return;
+      }
+      if (this.isOpenObservationId === observation.get('id')) {
+        this.isOpenObservationId = null;
+        return;
+      }
     }
     this.isOpenObservationId = observation.get('id');
   }

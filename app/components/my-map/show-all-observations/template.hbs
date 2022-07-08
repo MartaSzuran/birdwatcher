@@ -12,7 +12,7 @@
   as |map|
 >
   <MyMap::ShowAllObservations::ObservationsOnMapTable
-    @observations={{this.currentMapObservations}}
+    @observations={{@observations}}
   />
 
   {{#each @observations as |observation|}}
@@ -23,7 +23,7 @@
       @onClick={{fn this.markerTooltipOpen observation}}
       as |marker|
     >
-      <marker.infoWindow @isOpen={{eq observation.id this.isOpenLocationId}}>
+      <marker.infoWindow @isOpen={{eq observation.id this.isOpenObservationId}}>
         <div class='text-center'>
           <div>
             {{observation.birdname}}
