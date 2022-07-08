@@ -2,25 +2,21 @@ import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { render } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
+import { setupMirage } from 'ember-cli-mirage/test-support';
 
 module('Integration | Component | user/details', function (hooks) {
   setupRenderingTest(hooks);
+  setupMirage(hooks);
 
-  test.skip('it renders', async function (assert) {
-    // Set any properties with this.set('myProperty', 'value');
-    // Handle any actions with this.set('myAction', function(val) { ... });
+  test('it renders', async function (assert) {
+    const user = this.server.create('user');
+    console.log(user);
 
-    await render(hbs`<User::Details />`);
+    this.set('user', user);
 
-    assert.dom(this.element).hasText('');
-
-    // Template block usage:
-    await render(hbs`
-      <User::Details>
-        template block text
-      </User::Details>
-    `);
-
-    assert.dom(this.element).hasText('template block text');
+    await render(hbs`<User::Details @user={{this.user}}/>`);
+    await this.pauseTest();
+    assert.dom('[data-test-username]').hasText(user.username);
+    assert.dom('[data-test-info]').hasText(user.info);
   });
 });
