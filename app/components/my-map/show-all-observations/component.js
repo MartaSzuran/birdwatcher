@@ -1,48 +1,32 @@
+/* eslint-disable prettier/prettier */
 import Component from '@glimmer/component';
 import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 import { inject as service } from '@ember/service';
 
-export default class MyMapShowAllObservationsObservationOnMapTableComponent extends Component {
+export default class MyMapShowAllObservationsComponent extends Component {
   @service store;
   @tracked isOpenObservationId = null;
   @tracked map;
-  @tracked latBounds;
-  @tracked lngBounds;
-
-  // get currentMapObservations() {
-  //   let observations = this.args.observations;
-  //   observations = observations.filter((element) => {
-  //     if (this.saveBounds) {
-  //       // console.log(element);
-  //       return this.checkLocation(element);
-  //     }
-  //   });
-  //   return observations;
-  // }
-
-  // checkLocation(element) {
-  //   if (
-  //     element.latLocation >= this.latBounds[0] &&
-  //     element.latLocation <= this.latBounds[1] &&
-  //     element.lngLocation >= this.lngBounds[0] &&
-  //     element.lngLocation <= this.lngBounds[1]
-  //   ) {
-  //     return element;
-  //   }
-  // }
+  @tracked currentLatBounds = this.startLatBounds;
+  @tracked currentLngBounds = this.startLngBounds;
+  @tracked startLatBounds;
+  @tracked startLngBounds;
+  @tracked isLoaded = false;
 
   @action
-  saveBounds(event) {
-    let bounds = event.map.getBounds();
-    if (!bounds) {
-      console.log('no bounds');
-      return null;
-    }
-    this.latBounds = [bounds.wb.lo, bounds.wb.hi];
-    this.lngBounds = [bounds.Ra.lo, bounds.Ra.hi];
-    // console.log(this.latBounds);
-    // console.log(this.lngBounds);
+  async saveStartBounds(event) {
+    let startBounds = await event.map.getBounds();
+    this.startLatBounds = [startBounds.wb.lo, startBounds.wb.hi];
+    this.startLngBounds = [startBounds.Ra.lo, startBounds.Ra.hi];
+    this.isLoaded = true;
+  }
+
+  @action
+  async onBoundsChange(event) {
+    let bounds = await event.map.getBounds();
+    this.currentLatBounds = [bounds.wb.lo, bounds.wb.hi];
+    this.currentLngBounds = [bounds.Ra.lo, bounds.Ra.hi];
   }
 
   @action

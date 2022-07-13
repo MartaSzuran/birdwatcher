@@ -7,13 +7,10 @@
   @minZoom={{10}}
   @panControl={{false}}
   @streetViewControl={{false}}
-  @onceOnIdle={{this.saveBounds}}
-  @onBoundsChanged={{this.saveBounds}}
+  @onceOnIdle={{this.saveStartBounds}}
+  @onBoundsChanged={{this.onBoundsChange}}
   as |map|
 >
-  <MyMap::ShowAllObservations::ObservationsOnMapTable
-    @observations={{@observations}}
-  />
 
   {{#each @observations as |observation|}}
     <map.marker
@@ -32,4 +29,13 @@
       </marker.infoWindow>
     </map.marker>
   {{/each}}
+
 </GMap>
+
+{{#if this.isLoaded}}
+  <MyMap::ShowAllObservations::ObservationsOnMapTable
+    @observations={{@observations}}
+    @currentLatBounds={{this.currentLatBounds}}
+    @currentLngBounds={{this.currentLngBounds}}
+  />
+{{/if}}
