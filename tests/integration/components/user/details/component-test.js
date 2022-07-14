@@ -15,7 +15,9 @@ module('Integration | Component | user/details', function (hooks) {
     this.set('user', user);
 
     await render(hbs`<User::Details @user={{this.user}}/>`);
-    await this.pauseTest();
+    assert
+      .dom('[data-test-photoURL]')
+      .hasAttribute('src', 'https://loremflickr.com/640/480/people');
     assert.dom('[data-test-username]').hasText(user.username);
     assert.dom('[data-test-info]').hasText(user.info);
   });

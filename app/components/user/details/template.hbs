@@ -1,5 +1,10 @@
 <div class='card mx-auto'>
-  <img src={{@user.photoURL}} class='card-img-top' alt='userPhoto' />
+  <img
+    src={{@user.photoURL}}
+    class='card-img-top'
+    alt='userPhoto'
+    data-test-photoURL
+  />
   <div class='card-body'>
     <h5 class='card-title' data-test-username>{{@user.username}}</h5>
     <p class='card-text' data-test-info>{{@user.info}}</p>
