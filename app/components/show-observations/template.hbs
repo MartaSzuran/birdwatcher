@@ -27,7 +27,7 @@
 </button>
 <button
   type='button'
-  class='reset btn btn-danger'
+  class='reset btn btn-dark'
   {{on 'click' this.clearFields}}
 >Clear
 </button>
@@ -57,7 +57,10 @@
           data-observation-lngLocation={{index}}
         >{{observation.lngLocation}}</td>
         <td data-observation-notes={{index}}>{{observation.notes}}</td>
+        <td><button type='button' class='btn btn-secondary'>Edit</button></td>
+        <td><button type='button' class='btn btn-danger'>Delete</button></td>
       </tr>
     {{/each}}
   </tbody>
 </table>
+<button type='button' class='btn btn-secondary'>Add observation</button>
