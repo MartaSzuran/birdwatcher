@@ -9,7 +9,6 @@ module('Integration | Component | show-observations', function (hooks) {
   setupMirage(hooks);
 
   test('it renders', async function (assert) {
-    assert.expect(2);
     const observations = this.server.createList('observation', 5);
 
     this.set('observations', observations);
