@@ -43,13 +43,20 @@
     </tr>
   </thead>
   <tbody>
-    {{#each @observations as |observation|}}
+    {{#each @observations as |observation index|}}
       <tr>
-        <td>{{moment-format observation.observationDate 'DD-MM-YYYY'}}</td>
-        <td>{{observation.birdname}}</td>
-        <td>{{observation.latLocation}}</td>
-        <td>{{observation.lngLocation}}</td>
-        <td>{{observation.notes}}</td>
+        <td data-observation-observationDate={{index}}>{{moment-format
+            observation.observationDate
+            'DD-MM-YYYY'
+          }}</td>
+        <td data-observation-birdname={{index}}>{{observation.birdname}}</td>
+        <td
+          data-observation-latLocation={{index}}
+        >{{observation.latLocation}}</td>
+        <td
+          data-observation-lngLocation={{index}}
+        >{{observation.lngLocation}}</td>
+        <td data-observation-notes={{index}}>{{observation.notes}}</td>
       </tr>
     {{/each}}
   </tbody>
