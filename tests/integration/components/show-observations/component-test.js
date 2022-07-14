@@ -1,6 +1,6 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render } from '@ember/test-helpers';
+import { render, click } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 import { setupMirage } from 'ember-cli-mirage/test-support';
 
@@ -15,6 +15,13 @@ module('Integration | Component | show-observations', function (hooks) {
     this.set('observations', observations);
 
     await render(hbs`<ShowObservations @observations={{this.observations}}/>`);
+
+    this.set('sortArrow', '');
+    assert
+      .dom('.btn.btn-secondary')
+      .hasText(`Sort by birdname ${this.sortArrow}`);
+
+    assert.dom('.reset.btn.btn-danger').hasText('Clear');
 
     observations.map((observation, index) => {
       // assert
