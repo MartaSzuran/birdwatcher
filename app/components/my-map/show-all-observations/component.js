@@ -15,17 +15,17 @@ export default class MyMapShowAllObservationsComponent extends Component {
   @tracked isLoaded = false;
 
   @action
-  async saveStartBounds(event) {
-    let startBounds = await event.map.getBounds();
-    this.startLatBounds = [startBounds.wb.lo, startBounds.wb.hi];
+  saveStartBounds(event) {
+    let startBounds = event.map.getBounds();
+    this.startLatBounds = [startBounds.vb.lo, startBounds.vb.hi];
     this.startLngBounds = [startBounds.Ra.lo, startBounds.Ra.hi];
     this.isLoaded = true;
   }
 
   @action
-  async onBoundsChange(event) {
-    let bounds = await event.map.getBounds();
-    this.currentLatBounds = [bounds.wb.lo, bounds.wb.hi];
+  onBoundsChange(event) {
+    let bounds = event.map.getBounds();
+    this.currentLatBounds = [bounds.vb.lo, bounds.vb.hi];
     this.currentLngBounds = [bounds.Ra.lo, bounds.Ra.hi];
   }
 
