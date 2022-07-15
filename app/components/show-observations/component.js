@@ -55,6 +55,6 @@ export default class ObservationComponent extends Component {
 
   @action
   transitionToAddObservation() {
-    window.location.href = '/observation';
+    window.location.href = '/add-observation';
   }
 }
