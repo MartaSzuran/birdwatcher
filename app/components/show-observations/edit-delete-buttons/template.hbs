@@ -1,4 +1,13 @@
 {{#if this.checkObservationOwner}}
   <button type='button' class='btn btn-secondary'>✎</button>
-  <button type='button' class='btn btn-danger'>✖</button>
+  <button
+    type='button'
+    class='btn btn-danger'
+    {{on 'click' this.showDeleteModal}}
+  >✖</button>
+{{/if}}
+{{#if this.isShowModal}}
+  <ShowObservations::EditDeleteButtons::DeleteModal
+    @hideDeleteModal={{this.hideDeleteModal}}
+  />
 {{/if}}

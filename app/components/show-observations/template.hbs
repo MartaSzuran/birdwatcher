@@ -1,20 +1,22 @@
 <span class='date'>
   <div class='input-group mb-3'>
     <span class='input-group-text' name='inputGroup-sizing-default'>From:</span>
-    <PikadayInputless
+    <PikadayInput
       @format='YYYY-MM-DD'
       @value={{this.dateFrom}}
       @onSelection={{this.onDateFromChange}}
+      @readonly={{'readonly'}}
     />
   </div>
 </span>
 <span class='date'>
   <div class='input-group mb-3'>
     <span class='input-group-text' name='inputGroup-sizing-default'>To:</span>
-    <PikadayInputless
+    <PikadayInput
       @format='YYYY-MM-DD'
       @value={{this.dateTo}}
       @onSelection={{this.onDateToChange}}
+      @readonly={{'readonly'}}
     />
   </div>
 </span>
@@ -57,7 +59,6 @@
           data-observation-lngLocation={{index}}
         >{{observation.lngLocation}}</td>
         <td data-observation-notes={{index}}>{{observation.notes}}</td>
-        <td>{{observation.owner.username}}</td>
         <td><ShowObservations::EditDeleteButtons
             @observationOwner={{observation.owner.username}}
           /></td>
