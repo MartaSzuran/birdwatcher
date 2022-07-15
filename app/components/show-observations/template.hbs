@@ -61,6 +61,7 @@
         <td data-observation-notes={{index}}>{{observation.notes}}</td>
         <td><ShowObservations::EditDeleteButtons
             @observationOwner={{observation.owner.username}}
+            @currentObservation={{observation}}
           /></td>
       </tr>
     {{/each}}

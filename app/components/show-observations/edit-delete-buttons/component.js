@@ -12,6 +12,10 @@ export default class ShowObservationsEditDeleteButtonsComponent extends Componen
     return this.session.currentUser.username;
   }
 
+  get currentObservation() {
+    return this.args.currentObservation;
+  }
+
   get currentObservationOwner() {
     return this.args.observationOwner;
   }
