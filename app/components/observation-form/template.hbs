@@ -33,7 +33,7 @@
         class='input-group-text'
         name='inputGroup-sizing-default'
       >Location</span>
-      {{#if this.isShowModal}}
+      {{#if this.isShowMapModal}}
         <input
           type='location'
           class='form-control'
@@ -48,11 +48,11 @@
           aria-label='Sizing example input'
           aria-describedby='inputGroup-sizing-default'
           value={{this.locations}}
-          {{on 'click' this.showModal}}
+          {{on 'click' this.showMapModal}}
         />
       {{/if}}
-      {{#if this.isShowModal}}
-        <ObservationForm::Modal
+      {{#if this.isShowMapModal}}
+        <ObservationForm::MapModal
           @onLatLocationChange={{this.onLatLocationChange}}
           @onLngLocationChange={{this.onLngLocationChange}}
         />
@@ -94,3 +94,8 @@
     </div>
   </fieldset>
 </form>
+{{#if this.isShowAddObservationModal}}
+  <ObservationForm::AddObservationModal
+    @hideAddObservationModal={{this.hideAddObservationModal}}
+  />
+{{/if}}

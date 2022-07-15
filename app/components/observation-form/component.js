@@ -14,7 +14,8 @@ export default class ObservationFormComponent extends Component {
   @tracked lngLocation;
   @tracked locations = '';
   @tracked notes = '';
-  @tracked isShowModal = false;
+  @tracked isShowMapModal = false;
+  @tracked isShowAddObservationModal = false;
 
   get isEmptyField() {
     return !(
@@ -28,7 +29,7 @@ export default class ObservationFormComponent extends Component {
   @action
   location() {
     if (this.latLocation && this.lngLocation) {
-      this.hideModal();
+      this.hideMapModal();
       this.locations = `latitude: ${this.latLocation.toFixed(
         6
       )} / longitude: ${this.lngLocation.toFixed(6)}`;
@@ -79,19 +80,25 @@ export default class ObservationFormComponent extends Component {
       observation
     );
     await observationModel.save();
+    this.isShowAddObservationModal = true;
     this.clear();
   }
 
   @action
-  showModal() {
-    this.isShowModal = true;
+  showMapModal() {
+    this.isShowMapModal = true;
   }
 
   @action
-  hideModal() {
+  hideMapModal() {
     if (this.latLocation && this.lngLocation) {
-      this.isShowModal = false;
+      this.isShowMapModal = false;
     }
+  }
+
+  @action
+  hideAddObservationModal(information) {
+    this.isShowAddObservationModal = information;
   }
 
   @action
