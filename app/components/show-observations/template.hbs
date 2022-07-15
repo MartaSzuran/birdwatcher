@@ -57,8 +57,10 @@
           data-observation-lngLocation={{index}}
         >{{observation.lngLocation}}</td>
         <td data-observation-notes={{index}}>{{observation.notes}}</td>
-        <td><button type='button' class='btn btn-secondary'>Edit</button></td>
-        <td><button type='button' class='btn btn-danger'>Delete</button></td>
+        <td>{{observation.owner.username}}</td>
+        <td><ShowObservations::EditDeleteButtons
+            @observationOwner={{observation.owner.username}}
+          /></td>
       </tr>
     {{/each}}
   </tbody>
