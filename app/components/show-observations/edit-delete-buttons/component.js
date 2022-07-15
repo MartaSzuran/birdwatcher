@@ -29,4 +29,9 @@ export default class ShowObservationsEditDeleteButtonsComponent extends Componen
   hideDeleteModal(information) {
     this.isShowModal = information;
   }
+
+  @action
+  editObservation() {
+    window.location.href = '/edit-observation';
+  }
 }

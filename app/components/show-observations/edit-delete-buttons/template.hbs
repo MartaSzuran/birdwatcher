@@ -1,5 +1,9 @@
 {{#if this.checkObservationOwner}}
-  <button type='button' class='btn btn-secondary'>✎</button>
+  <button
+    type='button'
+    class='btn btn-secondary'
+    {{on 'click' this.editObservation}}
+  >✎</button>
   <button
     type='button'
     class='btn btn-danger'
