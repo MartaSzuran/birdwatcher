@@ -52,4 +52,9 @@ export default class ObservationComponent extends Component {
     this.dateFrom = null;
     this.args.clearFiltersDates();
   }
+
+  @action
+  transitionToAddObservation() {
+    window.location.href = '/observation';
+  }
 }
