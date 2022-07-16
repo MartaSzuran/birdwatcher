@@ -6,6 +6,8 @@ import { tracked } from '@glimmer/tracking';
 export default class LoginController extends Controller {
   @service store;
   @service session;
+  @service router;
+
   @tracked userName;
   @tracked userPassword;
 
@@ -24,5 +26,10 @@ export default class LoginController extends Controller {
     event.preventDefault();
     const { userName, userPassword } = this;
     await this.session.loggedUser(userName, userPassword);
+  }
+
+  @action
+  redirectToRegisterRoute() {
+    this.router.transitionTo('register');
   }
 }

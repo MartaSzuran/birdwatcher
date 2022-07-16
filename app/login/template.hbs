@@ -40,7 +40,8 @@
         <button
           type='button'
           class='bg-none btn w-50 btn-lg btn-primary active mr-1'
-        ><LinkTo @route='register' class='bg-none'>Register</LinkTo></button>
+          {{on 'click' this.redirectToRegisterRoute}}
+        >Register</button>
       </div>
     </div>
   </form>
