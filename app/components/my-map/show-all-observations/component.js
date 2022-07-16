@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import Component from '@glimmer/component';
 import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
