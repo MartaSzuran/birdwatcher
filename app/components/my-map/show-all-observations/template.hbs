@@ -29,15 +29,18 @@
       </marker.infoWindow>
     </map.marker>
   {{/each}}
-
 </GMap>
 
-{{#if this.isLoaded}}
-  <MyMap::ShowAllObservations::ObservationsOnMapTable
-    @observations={{@observations}}
-    @currentLatBounds={{this.currentLatBounds}}
-    @currentLngBounds={{this.currentLngBounds}}
-  />
-{{else}}
-  <span class='loader'></span>
-{{/if}}
+<div class='observations-under-map'>
+  {{#if this.isLoaded}}
+    <MyMap::ShowAllObservations::ObservationsOnMapTable
+      @observations={{@observations}}
+      @currentLatBounds={{this.currentLatBounds}}
+      @currentLngBounds={{this.currentLngBounds}}
+    />
+  {{else}}
+    <div class='small-spinner'>
+      <span class='loader'></span>
+    </div>
+  {{/if}}
+</div>
