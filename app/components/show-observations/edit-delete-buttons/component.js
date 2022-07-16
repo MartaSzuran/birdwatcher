@@ -5,6 +5,7 @@ import { action } from '@ember/object';
 
 export default class ShowObservationsEditDeleteButtonsComponent extends Component {
   @service session;
+  @service router;
   @service store;
   @tracked isShowModal = false;
 
@@ -36,6 +37,9 @@ export default class ShowObservationsEditDeleteButtonsComponent extends Componen
 
   @action
   editObservation() {
-    window.location.href = '/edit-observation';
+    this.router.transitionTo(
+      'home.edit-observation',
+      this.currentObservation.id
+    );
   }
 }

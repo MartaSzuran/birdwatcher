@@ -10,7 +10,7 @@ Router.map(function () {
   this.route('home', { path: '/' }, function () {
     this.route('user');
     this.route('add-observation');
-    this.route('edit-observation');
+    this.route('edit-observation', { path: 'edit-observation/:id' });
     this.route('observations');
   });
   this.route('register');
