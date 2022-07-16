@@ -1,56 +1,67 @@
 .loader {
   width: 48px;
   height: 48px;
-  border-radius: 50%;
-  position: relative;
-  animation: rotate 1s linear infinite
+  position: initial;
 }
 
 .loader::before,
 .loader::after {
-  content: "";
-  box-sizing: border-box;
+  content: '';
   position: absolute;
-  inset: 0px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 48em;
+  height: 48em;
+  background-image:
+    radial-gradient(circle 10px, #ade9a8 100%, transparent 0),
+    radial-gradient(circle 10px, #ade9a8 100%, transparent 0),
+    radial-gradient(circle 10px, #ade9a8 100%, transparent 0),
+    radial-gradient(circle 10px, #ade9a8 100%, transparent 0),
+    radial-gradient(circle 10px, #ade9a8 100%, transparent 0),
+    radial-gradient(circle 10px, #ade9a8 100%, transparent 0),
+    radial-gradient(circle 10px, #ade9a8 100%, transparent 0),
+    radial-gradient(circle 10px, #ade9a8 100%, transparent 0);
+  background-position: 0em -18em, 0em 18em, 18em 0em, -18em 0em,
+    13em -13em, -13em -13em, 13em 13em, -13em 13em;
+  background-repeat: no-repeat;
+  font-size: 0.5px;
   border-radius: 50%;
-  border: 5px solid #FFF;
-  animation: prixClipFix 2s linear infinite;
+  animation: blast 1s ease-in infinite;
 }
 
 .loader::after {
-  border-color: #FF3D00;
-  animation: prixClipFix 2s linear infinite, rotate 0.5s linear infinite reverse;
-  inset: 6px;
+  font-size: 1px;
+  background: rgb(15, 85, 79);
+  animation: bounce 1s ease-in infinite;
 }
 
-@keyframes rotate {
-  0% {
-    transform: rotate(0deg)
-  }
+@keyframes bounce {
 
+  0%,
   100% {
-    transform: rotate(360deg)
-  }
-}
-
-@keyframes prixClipFix {
-  0% {
-    clip-path: polygon(50% 50%, 0 0, 0 0, 0 0, 0 0, 0 0)
-  }
-
-  25% {
-    clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 0, 100% 0, 100% 0)
+    font-size: 0.75px
   }
 
   50% {
-    clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 100% 100%, 100% 100%)
+    font-size: 1.5px
+  }
+}
+
+@keyframes blast {
+
+  0%,
+  40% {
+    font-size: 0.5px;
   }
 
-  75% {
-    clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 100%)
+  70% {
+    opacity: 1;
+    font-size: 4px;
   }
 
   100% {
-    clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 0)
+    font-size: 6px;
+    opacity: 0;
   }
 }
