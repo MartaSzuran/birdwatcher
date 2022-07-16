@@ -33,4 +33,9 @@ export default class RegisterController extends Controller {
     await this.model.save();
     this.router.transitionTo('login');
   }
+
+  @action
+  redirectToLoginPage() {
+    this.router.transitionTo('login');
+  }
 }
