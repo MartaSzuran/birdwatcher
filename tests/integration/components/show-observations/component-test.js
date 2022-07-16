@@ -3,6 +3,7 @@ import { setupRenderingTest } from 'ember-qunit';
 import { render, click } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 import { setupMirage } from 'ember-cli-mirage/test-support';
+import moment from 'moment';
 
 module('Integration | Component | show-observations', function (hooks) {
   setupRenderingTest(hooks);
@@ -10,49 +11,38 @@ module('Integration | Component | show-observations', function (hooks) {
 
   test('it renders', async function (assert) {
     const observations = this.server.createList('observation', 5);
+    const user = this.server.create('user');
+    const currentUserObservation = this.server.create('observation', {
+      owner: user,
+    });
+    observations.push(currentUserObservation);
+
+    const sessionService = this.owner.lookup('service:session');
+
+    sessionService.currentUser = user;
 
     this.set('observations', observations);
 
     await render(hbs`<ShowObservations @observations={{this.observations}}/>`);
 
-    this.set('sortArrow', '');
-
-    assert.equal(
-      this.element.querySelector('.btn.btn-secondary').textContent.trim(),
-      `Sort by birdname${this.sortArrow}`
-    );
-
-    // assert.deepEqual('this.sortToggle', (actualSortParam) => {
-    //   let expectedSortParam = 'ASC';
-    //   assert.deepEqual(actualSortParam, expectedSortParam);
-    // });
-
-    // await click('.btn.btn-secondary');
-    // this.set('sortArrow', '↓a');
-    // this.set('this.args.sortParam', 'ASC');
-
-    // assert.equal(
-    //   this.element.querySelector('.btn.btn-secondary').textContent.trim(),
-    //   `Sort by birdname ${this.sortArrow}`
-    // );
-
-    assert.dom('.reset.btn.btn-danger').hasText('Clear');
-
     observations.map((observation, index) => {
-      // assert
-      //   .dom(`[data-observation-observationDate="${index}"]`)
-      //   .has(observation.observationDate);
+      const stringDate = moment(observation.observationDate).format(
+        'DD-MM-YYYY'
+      );
       assert
-        .dom(`[data-observation-birdname="${index}"]`)
+        .dom(`[data-test-observation-observationDate="${index}"]`)
+        .hasText(stringDate);
+      assert
+        .dom(`[data-test-observation-birdname="${index}"]`)
         .hasText(observation.birdname);
       assert
-        .dom(`[data-observation-latLocation="${index}"]`)
-        .hasText(JSON.stringify(observation.latLocation));
+        .dom(`[data-test-observation-latLocation="${index}"]`)
+        .hasText(`${observation.latLocation}`);
       assert
-        .dom(`[data-observation-lngLocation="${index}"]`)
-        .hasText(JSON.stringify(observation.lngLocation));
+        .dom(`[data-test-observation-lngLocation="${index}"]`)
+        .hasText(`${observation.lngLocation}`);
       assert
-        .dom(`[data-observation-notes="${index}"]`)
+        .dom(`[data-test-observation-notes="${index}"]`)
         .hasText(observation.notes);
     });
   });

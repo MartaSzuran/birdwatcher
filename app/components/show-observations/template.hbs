@@ -47,18 +47,20 @@
   <tbody>
     {{#each @observations as |observation index|}}
       <tr>
-        <td data-observation-observationDate={{index}}>{{moment-format
+        <td data-test-observation-observationDate={{index}}>{{moment-format
             observation.observationDate
             'DD-MM-YYYY'
           }}</td>
-        <td data-observation-birdname={{index}}>{{observation.birdname}}</td>
         <td
-          data-observation-latLocation={{index}}
+          data-test-observation-birdname={{index}}
+        >{{observation.birdname}}</td>
+        <td
+          data-test-observation-latLocation={{index}}
         >{{observation.latLocation}}</td>
         <td
-          data-observation-lngLocation={{index}}
+          data-test-observation-lngLocation={{index}}
         >{{observation.lngLocation}}</td>
-        <td data-observation-notes={{index}}>{{observation.notes}}</td>
+        <td data-test-observation-notes={{index}}>{{observation.notes}}</td>
         <td><ShowObservations::EditDeleteButtons
             @observationOwner={{observation.owner.username}}
             @currentObservation={{observation}}
