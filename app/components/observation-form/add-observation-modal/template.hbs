@@ -1,8 +1,6 @@
 <ModalDialog @translucentOverlay={{true}}>
-  <h2
-    style='text-align: center; margin-top: 10px; margin-left:18px; margin-right:18px'
-  >Observation has been added!</h2>
-  <div style='text-align: center; margin-bottom: 10px; margin-top:5px'>
+  <h2>Observation has been added!</h2>
+  <div class='modal-btns'>
     <button
       type='button'
       class='btn btn-success'
@@ -11,7 +9,6 @@
     <button
       type='button'
       class='btn btn-secondary'
-      style='margin-left: 5px'
       {{on 'click' this.transitionToUserProfile}}
     >My observations list</button>
   </div>

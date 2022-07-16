@@ -4,6 +4,27 @@
 @import 'maps';
 @import 'modal';
 
+h2 {
+  text-align: center; 
+  margin-top: 10px; 
+  margin-left: 18px; 
+  margin-right: 18px
+}
+
+.btn-btn-secondary {
+  margin-left: 5px;
+}
+
+.modal-btns {
+  text-align: center; 
+  margin-bottom: 10px; 
+  margin-top:5px
+}
+
+.btn-btn-danger-delete {
+  margin-left: 5px;
+}
+
 .nav {
   font-size: 20px;
   font-weight: bold;
