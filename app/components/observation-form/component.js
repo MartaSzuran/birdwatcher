@@ -1,12 +1,14 @@
 import Component from '@glimmer/component';
-import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
+import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
+// import birdList from '/birdwatcher_app/birdwatcher/app/utils/bird-list.js';
 import moment from 'moment';
 
 export default class ObservationFormComponent extends Component {
   @service session;
   @service store;
+
   @tracked birdname = '';
   @tracked obserDate;
   @tracked latLocation;
@@ -15,6 +17,12 @@ export default class ObservationFormComponent extends Component {
   @tracked notes = '';
   @tracked isShowMapModal = false;
   @tracked isShowAddObservationModal = false;
+
+  // birdList = birdList;
+
+  // get showBirdList() {
+  //   return console.log(birdList);
+  // }
 
   get isEmptyField() {
     return !(
