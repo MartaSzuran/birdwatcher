@@ -17,7 +17,6 @@ export default class SessionService extends Service {
       filter: { username: username, password: password },
     });
     const validUser = !!users.length;
-    console.log(users);
     if (validUser) {
       const user = users.firstObject;
       this.loggedAs.set('id', user.id);

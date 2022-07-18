@@ -18,7 +18,6 @@ export default class ShowObservationsEditDeleteButtonsDeleteModalComponent exten
 
   @action
   deleteObservation() {
-    console.log(this.currentObservation);
     this.currentObservation.destroyRecord();
   }
 }
