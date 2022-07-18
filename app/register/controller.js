@@ -6,6 +6,15 @@ export default class RegisterController extends Controller {
   @service store;
   @service router;
 
+  get shouldSaveNewUser() {
+    return Boolean(
+      this.model.username &&
+        this.model.email &&
+        this.model.password &&
+        this.model.photoURL
+    );
+  }
+
   @action
   onUsernameChange(event) {
     this.model.username = event.target.value;
@@ -28,9 +37,11 @@ export default class RegisterController extends Controller {
 
   @action
   async onSubmit(event) {
-    event.preventDefault();
-    await this.model.save();
-    this.router.transitionTo('login');
+    if (this.shouldSaveNewUser) {
+      event.preventDefault();
+      await this.model.save();
+      this.router.transitionTo('login');
+    }
   }
 
   @action
