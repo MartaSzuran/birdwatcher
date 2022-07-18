@@ -4,7 +4,7 @@ const birdsList = [
   'błotniak stawowy',
   'cierniówka',
   'czajka',
-  'skiroka czarnogłówka',
+  'sikoroka czarnogłówka',
   'sikorka czubatka',
   'dymówka',
   'dzierlatka',
