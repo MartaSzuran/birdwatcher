@@ -1,2 +1,98 @@
-<div>edit observation</div>
-<div>{{this.model.birdname}}</div>
+<h1 class='text-center mb-3'>Edit observation</h1>
+
+<form>
+  <fieldset>
+    <div class='input-group mb-3'>
+      <span
+        class='input-group-text'
+        name='inputGroup-sizing-default'
+      >Date</span>
+      <PikadayInput
+        @format='YYYY-MM-DD'
+        @value={{this.model.observationDate}}
+        @onSelection={{this.onDateChange}}
+        @readonly={{'readonly'}}
+      />
+    </div>
+    <div class='input-group mb-3'>
+      <span class='input-group-text' name='inputGroup-sizing-default'>Bird name</span>
+      <input
+        type='birdname'
+        class='form-control'
+        aria-label='Sizing example input'
+        aria-describedby='inputGroup-sizing-default'
+        value={{this.model.birdname}}
+        {{on 'input' this.onBirdnameChange}}
+      />
+    </div>
+    <div class='input-group mb-3'>
+      <span
+        class='input-group-text'
+        name='inputGroup-sizing-default'
+      >Location</span>
+      {{#if this.isShowMapModal}}
+        <input
+          type='location'
+          class='form-control'
+          aria-label='Sizing example input'
+          aria-describedby='inputGroup-sizing-default'
+          disabled
+        />
+      {{else}}
+        <input
+          type='location'
+          class='form-control'
+          aria-label='Sizing example input'
+          aria-describedby='inputGroup-sizing-default'
+          value={{this.currentLocations}}
+          placeholder={{this.currentLocations}}
+          {{on 'click' this.showMapModal}}
+        />
+      {{/if}}
+      {{#if this.isShowMapModal}}
+        <ModalDialog @translucentOverlay={{true}}>
+          <MyMap::AddObservation
+            @onLatLocationChange={{this.onLatLocationChange}}
+            @onLngLocationChange={{this.onLngLocationChange}}
+          />
+        </ModalDialog>
+      {{/if}}
+
+    </div>
+
+    <div class='input-group mb-3'>
+      <span
+        class='input-group-text'
+        name='inputGroup-sizing-default'
+      >Notes</span>
+      <textarea
+        class='form-control'
+        id='exampleFormControlTextarea1'
+        rows='3'
+        value={{this.model.notes}}
+        placeholder={{this.model.notes}}
+        {{on 'input' this.onNotesChange}}
+      ></textarea>
+    </div>
+    <div class='mb-3 row'>
+      <div class='d-flex'>
+        <button
+          type='submit'
+          class='btn w-50 btn-lg btn-primary active mr-1'
+          disabled={{this.isEmptyField}}
+          {{on 'click' this.onSave}}
+        >Save</button>
+        <button
+          type='button'
+          class='btn w-50 btn-lg btn-primary active mr-1'
+          {{on 'click' this.onCancel}}
+        >Cancel</button>
+      </div>
+    </div>
+  </fieldset>
+</form>
+{{!-- {{#if this.isShowAddObservationModal}}
+  <ObservationForm::AddObservationModal
+    @hideAddObservationModal={{this.hideAddObservationModal}}
+  />
+{{/if}} --}}
