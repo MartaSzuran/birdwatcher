@@ -1,21 +1,45 @@
-<ul class='nav'>
-  <li class='nav-item'>
-    <LinkTo @route='home.index' class='nav-link'>Home</LinkTo>
-  </li>
-  <li class='nav-item'>
-    <LinkTo @route='home.user' class='nav-link'>Profile</LinkTo>
-  </li>
-  <li class='nav-item'>
-    <LinkTo @route='home.observations' class='nav-link'>Observations</LinkTo>
-  </li>
-  <li class='nav-item'>
-    <LinkTo @route='home.add-observation' class='nav-link'>Add obeservation</LinkTo>
-  </li>
-  <li class='nav-item'>
-    <span
-      role='button'
-      class='nav-link'
-      {{on 'click' this.onLogout}}
-    >Logout</span>
-  </li>
-</ul>
+<nav class='navbar navbar-expand-lg navbar-light bg-light'>
+  <div class='container-fluid'>
+    <button
+      class='navbar-toggler'
+      type='button'
+      data-bs-toggle='collapse'
+      data-bs-target='#navbarTogglerDemo03'
+      aria-controls='navbarTogglerDemo03'
+      aria-expanded='false'
+      aria-label='Toggle navigation'
+    >
+      <span class='navbar-toggler-icon'></span>
+    </button>
+    <a class='navbar-brand' href='#'>
+      <img src='/assets/images/bird.png' alt='bird' width='40' height='34' />
+    </a>
+    <div class='collapse navbar-collapse' id='navbarTogglerDemo03'>
+      <ul class='navbar-nav me-auto mb-2 mb-lg-0'>
+        <li class='nav-item'>
+          <LinkTo @route='home.index' class='nav-link'>Home</LinkTo>
+        </li>
+        <li class='nav-item'>
+          <LinkTo @route='home.user' class='nav-link'>Profile</LinkTo>
+        </li>
+        <li class='nav-item'>
+          <LinkTo
+            @route='home.observations'
+            class='nav-link'
+          >Observations</LinkTo>
+        </li>
+        <li class='nav-item'>
+          <LinkTo @route='home.add-observation' class='nav-link'>Add
+            obeservation</LinkTo>
+        </li>
+        <li class='nav-item'>
+          <LinkTo
+            @route='home.add-observation'
+            class='nav-link'
+            {{on 'click' this.onLogout}}
+          >Logout</LinkTo>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

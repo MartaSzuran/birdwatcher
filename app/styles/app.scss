@@ -26,25 +26,6 @@ h2 {
   margin-left: 5px;
 }
 
-.nav {
-  font-size: 20px;
-  font-weight: bold;
-  color: #ade9a8;
-  background-color: bisque;
-  margin-bottom: 10px;
-}
-
-.nav-link {
-  text-decoration: none;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  padding-left: 30px;
-  color:#279c66;
-}
-
-.nav-link:hover {
-  color: #1f7d34;
-}
-
 $mynewcolor: #77cccc;
 
 .btn-primary {
@@ -78,12 +59,29 @@ $mynewcolor: #77cccc;
 }
 
 .observations-under-map {
-  margin-top: 10px;
-  width: 100%;
+  width: 98%;
   height: 300px;
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 2%;
 }
 
 .small-spinner {
   margin-top: 30px;
+  text-align: center;
+}
+
+.table-info{
+  text-align: center;
+  font-size: medium;
+}
+
+.navbar {
+  font-size: large;
+  border-radius: 2%;
+}
+
+.table {
   text-align: center;
 }

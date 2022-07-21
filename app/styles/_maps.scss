@@ -1,14 +1,13 @@
 .ember-google-map {
   width: 500px;
   height: 500px;
-  border-color: #ade9a8;
-  border-width: 20px;
-  border-style: solid;
+  border-radius: 1%;
 }
 
 .main-map {
-  width: 90%;
+  width: 98%;
   display: block;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 15px;
 }
