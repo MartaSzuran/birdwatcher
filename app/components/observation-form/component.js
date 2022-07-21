@@ -8,6 +8,7 @@ import moment from 'moment';
 export default class ObservationFormComponent extends Component {
   @service session;
   @service store;
+  @service router;
 
   @tracked birdname = '';
   @tracked obserDate;
@@ -102,6 +103,11 @@ export default class ObservationFormComponent extends Component {
   @action
   hideAddObservationModal(information) {
     this.isShowAddObservationModal = information;
+  }
+
+  @action
+  onCancel() {
+    this.router.transitionTo('/user');
   }
 
   @action

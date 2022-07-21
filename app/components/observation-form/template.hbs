@@ -8,6 +8,7 @@
         name='inputGroup-sizing-default'
       >Date</span>
       <PikadayInput
+        class='form-control'
         @format='YYYY-MM-DD'
         @value={{this.obserDate}}
         @onSelection={{this.onDateChange}}
@@ -84,6 +85,7 @@
         <button
           type='button'
           class='btn w-50 btn-lg btn-primary active mr-1'
+          {{on 'click' this.onCancel}}
         >Cancel</button>
         <button
           type='button'
