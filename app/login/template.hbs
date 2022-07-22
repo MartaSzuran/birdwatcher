@@ -2,49 +2,43 @@
 
 <GeneralContainer>
   <h1 class='text-center mb-3'>Login</h1>
-  <form {{on 'submit' this.onSubmit}}>
-    <div class='input-group mb-3'>
-      <span
-        class='input-group-text'
-        id='inputGroup-sizing-default'
-      >Username</span>
-      <input
-        type='username'
-        class='form-control'
-        aria-label='Sizing example input'
-        aria-describedby='inputGroup-sizing-default'
-        placeholder='name'
-        {{on 'input' this.onLoginChange}}
-      />
-    </div>
-    <div class='input-group mb-3'>
-      <span
-        class='input-group-text'
-        id='inputGroup-sizing-default2'
-      >Password</span>
-      <input
-        type='password'
-        class='form-control'
-        aria-label='Sizing example input'
-        aria-describedby='inputGroup-sizing-default2'
-        placeholder='password'
-        {{on 'input' this.onPasswordChange}}
-      />
-    </div>
-    <div class='mb-3 row'>
-      <div class='d-flex'>
-        <button
-          type='submit'
-          class='btn w-50 btn-lg btn-primary active mr-1'
-        >Login</button>
-        <button
-          type='button'
-          class='bg-none btn w-50 btn-lg btn-primary active mr-1'
-          {{on 'click' this.redirectToRegisterRoute}}
-        >Register</button>
+  <fieldset>
+    <form {{on 'submit' this.onSubmit}}>
+      <div class='input-group mb-3'>
+        <span class='input-group-text'>Login</span>
+        <input
+          type='login'
+          class='form-control'
+          aria-label='Sizing example input'
+          aria-describedby='inputGroup-sizing-default'
+          {{on 'input' this.onLoginChange}}
+        />
       </div>
-    </div>
-  </form>
+      <div class='input-group mb-3'>
+        <span class='input-group-text'>Password</span>
+        <input
+          type='password'
+          class='form-control'
+          aria-label='Sizing example input'
+          aria-describedby='inputGroup-sizing-default'
+          {{on 'input' this.onPasswordChange}}
+        />
+      </div>
+      <div class='mb-3 row'>
+        <div class='d-flex'>
+          <button
+            type='submit'
+            class='btn w-50 btn-lg btn-primary active mr-1'
+          >Login</button>
+          <button
+            type='button'
+            class='bg-none btn w-50 btn-lg btn-primary active mr-1'
+            {{on 'click' this.redirectToRegisterRoute}}
+          >Register</button>
+        </div>
+      </div>
+    </form>
+  </fieldset>
 </GeneralContainer>
 
 {{outlet}}

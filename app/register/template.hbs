@@ -4,16 +4,12 @@
   <h1 class='text-center mb-3'>Registration</h1>
 
   <div class='input-group mb-3'>
-    <span
-      class='input-group-text'
-      id='inputGroup-sizing-default'
-    >Username</span>
+    <span class='input-group-text'>Username</span>
     <input
       type='username'
       class='form-control'
       aria-label='Sizing example input'
       aria-describedby='inputGroup-sizing-default'
-      value={{this.username}}
       {{on 'input' this.onUsernameChange}}
     />
   </div>
