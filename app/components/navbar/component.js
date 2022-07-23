@@ -8,5 +8,6 @@ export default class NavbarComponent extends Component {
   @action
   onLogout() {
     this.session.logoutUser();
+    window.location.href = '/';
   }
 }
