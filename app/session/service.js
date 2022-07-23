@@ -26,7 +26,6 @@ export default class SessionService extends Service {
 
   logoutUser() {
     this.loggedAs.set('id', null);
-    window.location.href = '/login';
   }
 
   async setCurrentUser() {
