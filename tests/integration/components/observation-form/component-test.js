@@ -1,26 +1,22 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render } from '@ember/test-helpers';
+import { render, click } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
+import { Interactor as Pikaday } from 'ember-pikaday/test-support';
+import { close as closePikaday } from 'ember-pikaday/test-support';
 
 module('Integration | Component | observation-form', function (hooks) {
   setupRenderingTest(hooks);
 
-  test.skip('it renders', async function (assert) {
-    // Set any properties with this.set('myProperty', 'value');
-    // Handle any actions with this.set('myAction', function(val) { ... });
-
+  test('it renders', async function (assert) {
     await render(hbs`<ObservationForm />`);
 
-    assert.dom(this.element).hasText('');
+    await click('[data-test-pikaday]');
 
-    // Template block usage:
-    await render(hbs`
-      <ObservationForm>
-        template block text
-      </ObservationForm>
-    `);
-
-    assert.dom(this.element).hasText('template block text');
+    await Pikaday.selectDate(new Date(2022, 8, 28));
+    assert.strictEqual(Pikaday.selectedYear(), '2022');
+    assert.strictEqual(Pikaday.selectedMonth(), '8');
+    assert.strictEqual(Pikaday.selectedDay(), '28');
+    await closePikaday('[data-test-pikaday]');
   });
 });
