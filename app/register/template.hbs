@@ -4,7 +4,7 @@
   <h1 class='text-center mb-3'>Registration</h1>
 
   <div class='input-group mb-3'>
-    <span class='input-group-text'>Username</span>
+    <span class='input-group-text'>*Username</span>
     <input
       type='username'
       class='form-control'
@@ -14,7 +14,7 @@
     />
   </div>
   <div class='input-group mb-3'>
-    <span class='input-group-text' id='inputGroup-sizing-default2'>Email</span>
+    <span class='input-group-text' id='inputGroup-sizing-default2'>*Email</span>
     <input
       type='email'
       class='form-control'
@@ -28,7 +28,7 @@
     <span
       class='input-group-text'
       id='inputGroup-sizing-default3'
-    >Password</span>
+    >*Password</span>
     <input
       type='password'
       class='form-control'
@@ -39,19 +39,28 @@
     />
   </div>
   <div class='input-group mb-3'>
-    <span
-      class='input-group-text'
-      id='inputGroup-sizing-default4'
-    >PhotoURL</span>
+    <span class='input-group-text' id='inputGroup-sizing-default4'>*Photo</span>
     <input
       type='photoURL'
       class='form-control'
       aria-label='Sizing example input'
       aria-describedby='inputGroup-sizing-default4'
-      value={{this.photoURL}}
+      value={{this.photo}}
       {{on 'input' this.onPhotoURLChange}}
     />
+    <button
+      class='btn btn-outline-secondary'
+      type='button'
+      id='button-addon2'
+      data-bs-toggle='collapse'
+      data-bs-target='#collapseExample'
+      aria-expanded='false'
+      aria-controls='collapseExample'
+    >Choose photo</button>
   </div>
+
+  <RegistrationPhotos @setChosenPhoto={{this.setChosenPhoto}} />
+
   <div class='mb-3 row'>
     <div class='d-flex'>
       <button

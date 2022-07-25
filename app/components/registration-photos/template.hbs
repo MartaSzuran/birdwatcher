@@ -1,0 +1,33 @@
+<div class='collapse' id='collapseExample'>
+  <div class='card card-body'>
+    <div>
+      <input
+        aria-label='bird1'
+        type='image'
+        class='register-photo'
+        src='/assets/images/imagesForUserRegistration/owl.jpg'
+        alt='owl'
+        value={{'owl.jpg'}}
+        {{on 'click' this.onChosenPhoto}}
+      />
+      <input
+        aria-label='bird2'
+        type='image'
+        class='register-photo'
+        src='/assets/images/imagesForUserRegistration/parrot.jpg'
+        alt='parrot'
+        value={{'parrot.jpg'}}
+        {{on 'click' this.onChosenPhoto}}
+      />
+      <input
+        aria-label='bird3'
+        type='image'
+        class='register-photo'
+        src='/assets/images/imagesForUserRegistration/robin.jpg'
+        alt='robin'
+        value={{'robin.jpg'}}
+        {{on 'click' this.onChosenPhoto}}
+      />
+    </div>
+  </div>
+</div>
