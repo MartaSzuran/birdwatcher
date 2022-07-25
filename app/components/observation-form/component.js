@@ -23,6 +23,7 @@ export default class ObservationFormComponent extends Component {
 
   get isEmptyField() {
     return !(
+      this.obserDate &&
       this.birdname &&
       this.latLocation &&
       this.lngLocation &&
