@@ -13,7 +13,7 @@
         @value={{this.obserDate}}
         @onSelection={{this.onDateChange}}
         @readonly={{'readonly'}}
-        data-test-pikaday
+        data-test-input-pikaday
       />
     </div>
     <div class='input-group mb-3'>
@@ -28,6 +28,7 @@
         aria-describedby='inputGroup-sizing-default'
         value={{this.birdname}}
         {{on 'input' this.onBirdnameChange}}
+        data-test-input-birdname
       />
     </div>
     <div class='input-group mb-3'>
@@ -42,6 +43,7 @@
           aria-label='Sizing example input'
           aria-describedby='inputGroup-sizing-default'
           disabled
+          data-test-input-location
         />
       {{else}}
         <input
@@ -51,6 +53,7 @@
           aria-describedby='inputGroup-sizing-default'
           value={{this.locations}}
           {{on 'click' this.showMapModal}}
+          data-test-input-location
         />
       {{/if}}
       {{#if this.isShowMapModal}}
@@ -73,25 +76,29 @@
         rows='3'
         value={{this.notes}}
         {{on 'input' this.onNotesChange}}
+        data-test-input-notes
       ></textarea>
     </div>
     <div class='mb-3 row'>
       <div class='d-flex'>
         <button
-          type='submit'
+          type='button'
           class='btn w-50 btn-lg btn-primary active mr-1'
           disabled={{this.isEmptyField}}
           {{on 'click' this.onSave}}
+          data-test-button-save
         >Save</button>
         <button
           type='button'
           class='btn w-50 btn-lg btn-primary active mr-1'
           {{on 'click' this.onCancel}}
+          data-test-button-cancel
         >Cancel</button>
         <button
           type='button'
           class='btn w-50 btn-lg btn-primary active mr-1'
           {{on 'click' this.clear}}
+          data-test-button-clear
         >Clear</button>
       </div>
     </div>
