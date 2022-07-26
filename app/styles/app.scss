@@ -31,8 +31,8 @@ $mynewcolor: #77cccc;
 
 .btn-primary {
   @include button-variant($mynewcolor, darken($mynewcolor, 15%), darken($mynewcolor, 10%), lighten($mynewcolor, 5%), lighten($mynewcolor, 10%), darken($mynewcolor, 30%));
-  margin-left: 50px;
-  margin-right: 50px;
+  margin-left: auto;
+  margin-right: auto;
 
 }
 
@@ -41,7 +41,8 @@ $mynewcolor: #77cccc;
 }
 
 .input-group .input-group-text {
-  width: 10%;
+  min-width: 90px;
+  padding: 0.1rem 0.35rem;
 }
 
 .date {
