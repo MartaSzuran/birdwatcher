@@ -85,9 +85,9 @@ module('Integration | Component | observation-form', function (hooks) {
 
   test('clear the form', async function (assert) {
     await click('[data-test-button-clear]');
-    assert.dom('[data-test-input-pikaday]').hasValue('');
-    assert.dom('[data-test-input-birdname]').hasValue('');
-    assert.dom('[data-test-input-location]').hasValue('');
-    assert.dom('[data-test-input-notes]').hasValue('');
+    assert.dom('[data-test-input-pikaday]').hasNoValue()
+    assert.dom('[data-test-input-birdname]').hasNoValue()
+    assert.dom('[data-test-input-location]').hasNoValue()
+    assert.dom('[data-test-input-notes]').hasNoValue()
   });
 });
