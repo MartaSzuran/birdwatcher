@@ -69,6 +69,7 @@ module('Integration | Component | observation-form', function (hooks) {
     await fillIn('[data-test-input-birdname]', `${this.observation.birdname}`);
     await fillIn('[data-test-input-notes]', `${this.observation.notes}`);
     await click('[data-test-input-location]');
+    // try if key works
 
     const { x, y, width, height } = find('iframe').getBoundingClientRect();
     document.elementFromPoint(x + width / 2, y + height / 2).click();
