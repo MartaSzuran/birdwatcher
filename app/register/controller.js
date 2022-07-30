@@ -1,10 +1,13 @@
 import Controller from '@ember/controller';
 import { action } from '@ember/object';
+import { tracked } from '@glimmer/tracking';
 import { inject as service } from '@ember/service';
 
 export default class RegisterController extends Controller {
   @service store;
   @service router;
+  @tracked chosenPhoto;
+  @tracked photo;
 
   get shouldSaveNewUser() {
     return Boolean(
@@ -13,6 +16,12 @@ export default class RegisterController extends Controller {
         this.model.password &&
         this.model.photoURL
     );
+  }
+
+  @action
+  setChosenPhoto(chosenPhoto) {
+    this.photo = chosenPhoto;
+    this.model.photoURL = `/assets/images/images-for-user-registration/${this.photo}`;
   }
 
   @action
