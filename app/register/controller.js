@@ -21,7 +21,7 @@ export default class RegisterController extends Controller {
   @action
   setChosenPhoto(chosenPhoto) {
     this.photo = chosenPhoto;
-    this.model.photoURL = `/assets/images/imagesForUserRegistration/${this.photo}`;
+    this.model.photoURL = `/assets/images/images-for-user-registration/${this.photo}`;
   }
 
   @action
