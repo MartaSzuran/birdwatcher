@@ -17,7 +17,7 @@ export default class MyMapShowAllObservationsComponent extends Component {
   saveStartBounds(event) {
     let startBounds = event.map.getBounds();
     this.startLatBounds = [startBounds.vb.lo, startBounds.vb.hi];
-    this.startLngBounds = [startBounds.Ra.lo, startBounds.Ra.hi];
+    this.startLngBounds = [startBounds.Sa.lo, startBounds.Sa.hi];
     this.isLoaded = true;
   }
 
@@ -25,7 +25,7 @@ export default class MyMapShowAllObservationsComponent extends Component {
   onBoundsChange(event) {
     let bounds = event.map.getBounds();
     this.currentLatBounds = [bounds.vb.lo, bounds.vb.hi];
-    this.currentLngBounds = [bounds.Ra.lo, bounds.Ra.hi];
+    this.currentLngBounds = [bounds.Sa.lo, bounds.Sa.hi];
   }
 
   @action
