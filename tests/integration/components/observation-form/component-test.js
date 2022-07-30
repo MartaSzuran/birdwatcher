@@ -56,18 +56,16 @@ module('Integration | Component | observation-form', function (hooks) {
   });
 
   test('fill in the form', async function (assert) {
+    const { observationDate, birdname, notes } = this.observation;
     assert.dom('[data-test-button-save]').hasAttribute('disabled');
-
-    const stringDate = moment(this.observation.observationDate).format(
-      'YYYY-MM-DD'
-    );
+    const stringDate = moment(observationDate).format('YYYY-MM-DD');
     await click('[data-test-input-pikaday]');
     await Pikaday.selectDate(new Date(stringDate));
 
     await closePikaday('[data-test-input-pikaday]');
 
-    await fillIn('[data-test-input-birdname]', `${this.observation.birdname}`);
-    await fillIn('[data-test-input-notes]', `${this.observation.notes}`);
+    await fillIn('[data-test-input-birdname]', `${birdname}`);
+    await fillIn('[data-test-input-notes]', `${notes}`);
     await click('[data-test-input-location]');
     // try if key works
 
@@ -75,13 +73,11 @@ module('Integration | Component | observation-form', function (hooks) {
     document.elementFromPoint(x + width / 2, y + height / 2).click();
 
     assert.dom('[data-test-input-pikaday]').hasValue(stringDate);
-    assert
-      .dom('[data-test-input-birdname]')
-      .hasValue(`${this.observation.birdname}`);
+    assert.dom('[data-test-input-birdname]').hasValue(`${birdname}`);
     await waitFor('[data-test-input-location]', { timeout: 5000 });
     const inputArr = findAll('input');
     assert.dom('[data-test-input-location]').hasValue(`${inputArr[2].value}`);
-    assert.dom('[data-test-input-notes]').hasValue(`${this.observation.notes}`);
+    assert.dom('[data-test-input-notes]').hasValue(`${notes}`);
   });
 
   test('clear the form', async function (assert) {
