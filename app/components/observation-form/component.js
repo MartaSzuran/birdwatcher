@@ -98,7 +98,9 @@ export default class ObservationFormComponent extends Component {
   hideMapModal() {
     if (this.latLocation && this.lngLocation) {
       this.isShowMapModal = false;
+      return;
     }
+    this.isShowMapModal = false;
   }
 
   @action

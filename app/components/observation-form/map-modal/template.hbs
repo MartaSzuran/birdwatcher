@@ -1,4 +1,4 @@
-<ModalDialog @translucentOverlay={{true}}>
+<ModalDialog @translucentOverlay={{true}} @onClickOverlay={{@hideMapModal}}>
   <MyMap::AddObservation
     @onLatLocationChange={{@onLatLocationChange}}
     @onLngLocationChange={{@onLngLocationChange}}

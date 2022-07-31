@@ -53,6 +53,7 @@
           aria-describedby='inputGroup-sizing-default'
           value={{this.locations}}
           {{on 'click' this.showMapModal}}
+          {{on 'keyup' this.showMapModal}}
           data-test-input-location
         />
       {{/if}}
@@ -60,7 +61,9 @@
         <ObservationForm::MapModal
           @onLatLocationChange={{this.onLatLocationChange}}
           @onLngLocationChange={{this.onLngLocationChange}}
+          @hideMapModal={{this.hideMapModal}}
         />
+
       {{/if}}
 
     </div>
