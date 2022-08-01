@@ -85,6 +85,7 @@
     "edition": "octane"
   },
   "dependencies": {
+    "auth0-lock": "^11.33.2",
     "moment-timezone": "^0.5.34",
     "pikaday": "^1.8.2"
   }

@@ -24,6 +24,10 @@ module.exports = function (environment) {
     },
   };
 
+  ENV['ember-cli-mirage'] = {
+    enabled: false,
+  };
+
   ENV['ember-google-maps'] = {
     key: process.env.GOOGLE_MAPS_API_KEY, // Using .env files in this example
     language: 'en',
@@ -48,6 +52,10 @@ module.exports = function (environment) {
   if (environment === 'test') {
     // Testem prefers this...
     ENV.locationType = 'none';
+
+    ENV['ember-cli-mirage'] = {
+      enabled: true,
+    };
 
     // keep test console output quieter
     ENV.APP.LOG_ACTIVE_GENERATION = false;

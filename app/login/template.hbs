@@ -35,6 +35,11 @@
             class='bg-none btn w-50 btn-lg btn-primary active mr-1'
             {{on 'click' this.redirectToRegisterRoute}}
           >Register</button>
+          <button
+            type='button'
+            class='bg-none btn w-50 btn-lg btn-primary active mr-1'
+            {{on 'click' this.onAuthLoginOrRegister}}
+          >Login with Google</button>
         </div>
       </div>
     </form>
