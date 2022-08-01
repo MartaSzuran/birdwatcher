@@ -6,6 +6,9 @@
 @import 'loader';
 @import 'registrationImages';
 
+body{
+  min-width: fit-content;
+}
 h2 {
   text-align: center; 
   margin-top: 10px; 
