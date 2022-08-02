@@ -27,8 +27,7 @@ export default class ObservationFormComponent extends Component {
       this.obserDate &&
       this.birdname &&
       this.latLocation &&
-      this.lngLocation &&
-      this.notes
+      this.lngLocation
     );
   }
 
@@ -105,8 +104,8 @@ export default class ObservationFormComponent extends Component {
   }
 
   @action
-  hideAddObservationModal(information) {
-    this.isShowAddObservationModal = information;
+  hideAddObservationModal(booleanInformation) {
+    this.isShowAddObservationModal = booleanInformation;
   }
 
   @action
