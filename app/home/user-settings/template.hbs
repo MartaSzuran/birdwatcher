@@ -1,0 +1,92 @@
+{{page-title 'User settings'}}
+<GeneralContainer>
+  <h1 class='text-center mb-3'>Settings</h1>
+
+  <div class='input-group mb-3'>
+    <span class='input-group-text'>Username</span>
+    <input
+      type='username'
+      class='form-control'
+      aria-label='Sizing example input'
+      value={{this.model.username}}
+      placeholder={{this.model.username}}
+      {{on 'input' this.onUsernameChange}}
+    />
+  </div>
+  <div class='input-group mb-3'>
+    <span class='input-group-text'>Email</span>
+    <input
+      type='email'
+      class='form-control'
+      aria-label='Sizing example input'
+      value={{this.model.email}}
+      placeholder={{this.model.email}}
+      {{on 'input' this.onEmailChange}}
+    />
+  </div>
+  <div class='input-group mb-3'>
+    <span class='input-group-text'>Info</span>
+    <input
+      type='info'
+      class='form-control'
+      aria-label='Sizing example input'
+      value={{this.model.info}}
+      placeholder={{this.model.info}}
+      {{on 'input' this.onInfoChange}}
+    />
+  </div>
+  <div class='input-group mb-3'>
+    <span
+      class='input-group-text'
+      id='inputGroup-sizing-default3'
+    >*Password</span>
+    <input
+      type='password'
+      class='form-control'
+      aria-label='Sizing example input'
+      value={{this.model.password}}
+      placeholder={{this.model.password}}
+      {{on 'input' this.onPasswordChange}}
+    />
+  </div>
+  <div class='input-group mb-3'>
+    <span class='input-group-text'>Photo</span>
+    <input
+      type='photoURL'
+      class='form-control'
+      aria-label='Sizing example input'
+      value={{this.photo}}
+      placeholder={{this.model.photo}}
+      {{on 'input' this.onPhotoURLChange}}
+    />
+    <button
+      class='btn btn-outline-secondary'
+      type='button'
+      id='button-addon2'
+      data-bs-toggle='collapse'
+      data-bs-target='#collapseDiv'
+      aria-expanded='false'
+      aria-controls='collapseDiv'
+    >Choose photo</button>
+  </div>
+
+  <RegistrationPhotos @setChosenPhoto={{this.setChosenPhoto}} />
+
+  <div class='mb-3 row'>
+    <div class='d-flex'>
+      <button
+        type='submit'
+        class='btn w-50 btn-lg btn-primary active mr-1'
+        {{on 'click' this.onSave}}
+      >Save</button>
+      <button
+        type='button'
+        class='btn w-50 btn-lg btn-primary active mr-1'
+        {{on 'click' this.onCancel}}
+      >Cancel</button>
+    </div>
+  </div>
+
+</GeneralContainer>
+
+{{outlet}}
