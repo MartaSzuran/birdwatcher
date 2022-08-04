@@ -10,7 +10,7 @@
       aria-label='Sizing example input'
       value={{this.model.username}}
       placeholder={{this.model.username}}
-      {{on 'input' this.onUsernameChange}}
+      {{on 'input' (fn this.onPropertyChange 'username')}}
     />
   </div>
   <div class='input-group mb-3'>
@@ -21,7 +21,7 @@
       aria-label='Sizing example input'
       value={{this.model.email}}
       placeholder={{this.model.email}}
-      {{on 'input' this.onEmailChange}}
+      {{on 'input' (fn this.onPropertyChange 'email')}}
     />
   </div>
   <div class='input-group mb-3'>
@@ -32,7 +32,7 @@
       aria-label='Sizing example input'
       value={{this.model.info}}
       placeholder={{this.model.info}}
-      {{on 'input' this.onInfoChange}}
+      {{on 'input' (fn this.onPropertyChange 'info')}}
     />
   </div>
   <div class='input-group mb-3'>
@@ -46,7 +46,7 @@
       aria-label='Sizing example input'
       value={{this.model.password}}
       placeholder={{this.model.password}}
-      {{on 'input' this.onPasswordChange}}
+      {{on 'input' (fn this.onPropertyChange 'password')}}
     />
   </div>
   <div class='input-group mb-3'>
@@ -56,8 +56,8 @@
       class='form-control'
       aria-label='Sizing example input'
       value={{this.photo}}
-      placeholder={{this.model.photo}}
-      {{on 'input' this.onPhotoURLChange}}
+      placeholder={{this.model.photoURL}}
+      {{on 'input' (fn this.onPropertyChange 'photo')}}
     />
     <button
       class='btn btn-outline-secondary'

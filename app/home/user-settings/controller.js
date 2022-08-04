@@ -6,37 +6,11 @@ import { inject as service } from '@ember/service';
 export default class HomeUserSettingsController extends Controller {
   @service store;
   @service router;
-
-  @tracked username;
-  @tracked email;
-  @tracked info;
-  @tracked password;
-  @tracked photoURL;
-  @tracked photo = this.model.photoURL;
+  @tracked photo;
 
   @action
-  onUsernameChange({ target: { value } }) {
-    this.model.username = value;
-  }
-
-  @action
-  onEmailChange({ target: { value } }) {
-    this.model.email = value;
-  }
-
-  @action
-  onInfoChange({ target: { value } }) {
-    this.model.info = value;
-  }
-
-  @action
-  onPasswordChange({ target: { value } }) {
-    this.model.password = value;
-  }
-
-  @action
-  onPhotoURLChange({ target: { value } }) {
-    this.model.photoURL = value;
+  onPropertyChange(propName, { target: { value } }) {
+    this.model[propName] = value;
   }
 
   @action
