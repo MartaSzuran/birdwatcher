@@ -3,7 +3,7 @@
 <form>
   <fieldset>
     <div class='input-group mb-3'>
-      <span class='input-group-text' name='inputGroup-sizing-default'>Date
+      <span class='input-group-text' name='inputGroup-sizing-default'>*Date
       </span>
       <PikadayInput
         class='form-control'
@@ -11,11 +11,13 @@
         @value={{this.obserDate}}
         @onSelection={{this.onDateChange}}
         @readonly={{'readonly'}}
+        @maxDate={{this.currentDay}}
         data-test-input-pikaday
       />
     </div>
     <div class='input-group mb-3'>
-      <span class='input-group-text' name='inputGroup-sizing-default'>Bird
+      <span class='input-group-text' name='inputGroup-sizing-default'>
+        *Bird
       </span>
       <input
         type='birdname'
@@ -28,7 +30,8 @@
       />
     </div>
     <div class='input-group mb-3'>
-      <span class='input-group-text' name='inputGroup-sizing-default'>Location
+      <span class='input-group-text' name='inputGroup-sizing-default'>
+        *Location
       </span>
       {{#if this.isShowMapModal}}
         <input
@@ -62,10 +65,9 @@
     </div>
 
     <div class='input-group mb-3'>
-      <span
-        class='input-group-text'
-        name='inputGroup-sizing-default'
-      >Notes</span>
+      <span class='input-group-text' name='inputGroup-sizing-default'>
+        *Notes
+      </span>
       <textarea
         class='form-control'
         id='exampleFormControlTextarea1'

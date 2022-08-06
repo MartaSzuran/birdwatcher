@@ -12,6 +12,7 @@ Router.map(function () {
     this.route('add-observation');
     this.route('edit-observation', { path: 'edit-observation/:id' });
     this.route('observations');
+    this.route('user-settings');
   });
   this.route('register');
   this.route('login');

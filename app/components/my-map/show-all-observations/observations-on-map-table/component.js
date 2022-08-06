@@ -6,14 +6,14 @@ export default class MyMapShowAllObservationsObservationsOnMapTableComponent ext
 
   get currentMapObservations() {
     let observations = this.args.observations;
-    const flteredObservations = observations.filter((observation) => {
+    const filteredObservations = observations.filter((observation) => {
       return this.checkLocation(
         observation,
         this.args.currentLatBounds,
         this.args.currentLngBounds
       );
     });
-    return flteredObservations;
+    return filteredObservations;
   }
 
   checkLocation(observation, latBounds, lngBounds) {
