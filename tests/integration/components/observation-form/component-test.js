@@ -39,9 +39,9 @@ module('Integration | Component | observation-form', function (hooks) {
 
   test('pikaday input', async function (assert) {
     await click('[data-test-input-pikaday]');
-    await Pikaday.selectDate(new Date(2022, 8, 28));
-    assert.strictEqual(Pikaday.selectedYear(), '2022');
-    assert.strictEqual(Pikaday.selectedMonth(), '8');
+    await Pikaday.selectDate(new Date(2021, 7, 28));
+    assert.strictEqual(Pikaday.selectedYear(), '2021');
+    assert.strictEqual(Pikaday.selectedMonth(), '7');
     assert.strictEqual(Pikaday.selectedDay(), '28');
     await closePikaday('[data-test-input-pikaday]');
   });
@@ -61,7 +61,6 @@ module('Integration | Component | observation-form', function (hooks) {
     const stringDate = moment(observationDate).format('YYYY-MM-DD');
     await click('[data-test-input-pikaday]');
     await Pikaday.selectDate(new Date(stringDate));
-
     await closePikaday('[data-test-input-pikaday]');
 
     await fillIn('[data-test-input-birdname]', `${birdname}`);
