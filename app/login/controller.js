@@ -3,9 +3,10 @@ import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
 import Auth0Lock from 'auth0-lock';
-const clientId = '90F1Mpg7Z2b7rBNtZx1TEyHAoRQkSBMl';
-const domain = 'dev-ows07sv1.us.auth0.com';
+import ENV from 'birdwatcher/config/environment';
 
+const clientId = ENV.AUTH0_CLIENTID;
+const domain = ENV.AUTH0_DOMAIN;
 export default class LoginController extends Controller {
   @service store;
   @service session;
