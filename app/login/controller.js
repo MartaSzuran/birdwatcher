@@ -7,6 +7,7 @@ import ENV from 'birdwatcher/config/environment';
 
 const clientId = ENV.AUTH0_CLIENTID;
 const domain = ENV.AUTH0_DOMAIN;
+
 export default class LoginController extends Controller {
   @service store;
   @service session;
