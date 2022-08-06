@@ -7,7 +7,7 @@ module('Integration | Component | registration-photos', function (hooks) {
   setupRenderingTest(hooks);
 
   test('check if photos exists', async function (assert) {
-    await render(hbs`<RegistrationPhotos/>`);
+    await render(hbs`<RegistrationPhotos />`);
 
     assert.dom('[data-test-photo1]').exists();
     assert.dom('[data-test-photo2]').exists();
@@ -15,7 +15,7 @@ module('Integration | Component | registration-photos', function (hooks) {
   });
 
   test('check if photos has proper atrribute src', async function (assert) {
-    await render(hbs`<RegistrationPhotos/>`);
+    await render(hbs`<RegistrationPhotos />`);
     assert
       .dom('[data-test-photo1]')
       .hasAttribute(
@@ -37,7 +37,7 @@ module('Integration | Component | registration-photos', function (hooks) {
   });
 
   test('check photos value', async function (assert) {
-    await render(hbs`<RegistrationPhotos/>`);
+    await render(hbs`<RegistrationPhotos />`);
     assert.dom('[data-test-photo1]').hasValue('owl.jpg');
     assert.dom('[data-test-photo2]').hasValue('parrot.jpg');
     assert.dom('[data-test-photo3]').hasValue('robin.jpg');
