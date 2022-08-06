@@ -7,6 +7,7 @@ module.exports = function (environment) {
     environment,
     rootURL: '/',
     locationType: 'history',
+    GOOGLE_MAPS_API_KEY: process.env.GOOGLE_MAPS_API_KEY,
     AUTH0_CLIENTID: process.env.AUTH0_CLIENTID,
     AUTH0_DOMAIN: process.env.AUTH0_DOMAIN,
     EmberENV: {
