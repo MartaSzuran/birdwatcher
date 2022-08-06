@@ -5,6 +5,8 @@ import { inject as service } from '@ember/service';
 
 export default class MyMapShowAllObservationsComponent extends Component {
   @service store;
+  @service session;
+
   @tracked isOpenObservationId = null;
   @tracked map;
   @tracked currentLatBounds = this.startLatBounds;
@@ -15,17 +17,19 @@ export default class MyMapShowAllObservationsComponent extends Component {
 
   @action
   saveStartBounds(event) {
-    let startBounds = event.map.getBounds();
-    this.startLatBounds = [startBounds.vb.lo, startBounds.vb.hi];
-    this.startLngBounds = [startBounds.Sa.lo, startBounds.Sa.hi];
+    const startBounds = event.map.getBounds();
+    const { lat, lng } = this.#recomputeCoordinates(startBounds);
+    this.startLatBounds = [lat.lo, lat.hi];
+    this.startLngBounds = [lng.lo, lng.hi];
     this.isLoaded = true;
   }
 
   @action
   onBoundsChange(event) {
     let bounds = event.map.getBounds();
-    this.currentLatBounds = [bounds.vb.lo, bounds.vb.hi];
-    this.currentLngBounds = [bounds.Sa.lo, bounds.Sa.hi];
+    const { lat, lng } = this.#recomputeCoordinates(bounds);
+    this.currentLatBounds = [lat.lo, lat.hi];
+    this.currentLngBounds = [lng.lo, lng.hi];
   }
 
   @action
@@ -41,5 +45,24 @@ export default class MyMapShowAllObservationsComponent extends Component {
       }
     }
     this.isOpenObservationId = observation.get('id');
+  }
+
+  #recomputeCoordinates(startBounds) {
+    const flatten = (obj) => {
+      let res = {};
+      for (const [key, value] of Object.entries(obj)) {
+        if (typeof value === 'object') {
+          res = { ...res, ...flatten(value) };
+        } else {
+          res[key] = value;
+        }
+      }
+      return res;
+    };
+
+    return Object.entries(startBounds).reduce((acc, [key, value]) => {
+      const keyName = key.endsWith('a') ? 'lng' : 'lat';
+      return { ...acc, [keyName]: flatten(value) };
+    }, {});
   }
 }
