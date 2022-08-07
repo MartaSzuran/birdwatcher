@@ -5,11 +5,13 @@
       type='button'
       class='btn btn-success'
       {{on 'click' this.deleteObservation}}
+      data-test-button-confirmation
     >✔</button>
     <button
       type='button'
       class='btn btn-danger delete'
       {{on 'click' this.hideModal}}
+      data-test-button-denial
     >✖</button>
   </div>
 </ModalDialog>

@@ -26,10 +26,6 @@ module(
       await render(hbs`<ShowObservations::EditDeleteButtons @observationOwner={{this.currentUserObservation.owner.username}}
             @currentObservation={{this.currentUserObservation}} />`);
 
-      this.set('checkObservationOwner', 'true');
-
-      // await this.pauseTest();
-
       assert.dom('[data-test-edit-button]').exists();
       assert.dom('[data-test-delete-button]').exists();
 
