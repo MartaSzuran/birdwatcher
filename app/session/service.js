@@ -38,9 +38,7 @@ export default class SessionService extends Service {
       this.loggedAs.set('id', user.id);
       window.location.href = '/';
       return;
-      return;
     }
-    this.isInvalidUser = true;
     this.isInvalidUser = true;
   }
 
