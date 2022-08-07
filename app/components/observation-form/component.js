@@ -18,9 +18,14 @@ export default class ObservationFormComponent extends Component {
   @tracked notes = '';
   @tracked isShowMapModal = false;
   @tracked isShowAddObservationModal = false;
-  @tracked currentDay = new Date();
+  @tracked currentDay;
 
   birdList = birdList;
+
+  constructor() {
+    super(...arguments);
+    this.currentDay = new Date();
+  }
 
   get isEmptyField() {
     return !(
