@@ -3,11 +3,13 @@
     type='button'
     class='btn btn-secondary'
     {{on 'click' this.editObservation}}
+    data-test-edit-button
   >✎</button>
   <button
     type='button'
     class='btn btn-danger'
     {{on 'click' this.showDeleteModal}}
+    data-test-delete-button
   >✖</button>
 {{/if}}
 {{#if this.isShowModal}}
