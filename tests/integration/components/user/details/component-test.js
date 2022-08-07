@@ -17,6 +17,10 @@ module('Integration | Component | user/details', function (hooks) {
       .dom('[data-test-photoURL]')
       .hasAttribute('src', 'https://loremflickr.com/640/480/people');
     assert.dom('[data-test-username]').hasText(user.username);
+    assert.dom('[data-test-email]').hasText(user.email);
     assert.dom('[data-test-info]').hasText(user.info);
+
+    assert.dom('[data-test-button-settings]').exists();
+    assert.dom('[data-test-button-settings]').hasText('Settings');
   });
 });

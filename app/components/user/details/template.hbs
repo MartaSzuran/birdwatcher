@@ -7,6 +7,13 @@
   />
   <div class='card-body'>
     <h5 class='card-title' data-test-username>{{@user.username}}</h5>
+    <p class='card-title' data-test-email>{{@user.email}}</p>
     <p class='card-text' data-test-info>{{@user.info}}</p>
   </div>
+  <button
+    type='button'
+    class='btn btn-secondary'
+    {{on 'click' this.transitionToSettingsRoute}}
+    data-test-button-settings
+  >Settings</button>
 </div>
