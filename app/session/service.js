@@ -7,6 +7,7 @@ export default class SessionService extends Service {
   @service store;
   @storageFor('logged-as') loggedAs;
   @tracked currentUser;
+  @tracked isInvalidUser = false;
 
   get isUserLoggedIn() {
     return Boolean(this.loggedAs.get('id'));
@@ -21,7 +22,9 @@ export default class SessionService extends Service {
       const user = users.firstObject;
       this.loggedAs.set('id', user.id);
       window.location.href = '/';
+      return;
     }
+    this.isInvalidUser = true;
   }
 
   logoutUser() {

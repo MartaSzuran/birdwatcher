@@ -15,15 +15,16 @@ export default class LoginController extends Controller {
 
   @tracked userName;
   @tracked userPassword;
+  @tracked isInvalidUser;
 
   @action
-  onLoginChange(event) {
-    this.userName = event.target.value;
+  onLoginChange({ target: { value } }) {
+    this.userName = value;
   }
 
   @action
-  onPasswordChange(event) {
-    this.userPassword = event.target.value;
+  onPasswordChange({ target: { value } }) {
+    this.userPassword = value;
   }
 
   @action
@@ -31,6 +32,7 @@ export default class LoginController extends Controller {
     event.preventDefault();
     const { userName, userPassword } = this;
     await this.session.loggedUser(userName, userPassword);
+    this.isInvalidUser = this.session.isInvalidUser;
   }
 
   @action

@@ -24,6 +24,13 @@
           {{on 'input' this.onPasswordChange}}
         />
       </div>
+      <div>
+        {{#if this.isInvalidUser}}
+          <div class='invalid-input'>
+            Invalid login or password!
+          </div>
+        {{/if}}
+      </div>
       <div class='mb-3 row'>
         <div class='d-flex'>
           <button
