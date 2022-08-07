@@ -15,6 +15,7 @@ export default class SessionService extends Service {
   @tracked currentUser;
   @tracked _lng;
   @tracked _lat;
+  @tracked isInvalidUser = false;
 
   get isUserLoggedIn() {
     return Boolean(this.loggedAs.get('id'));
@@ -36,7 +37,9 @@ export default class SessionService extends Service {
       const user = users.firstObject;
       this.loggedAs.set('id', user.id);
       window.location.href = '/';
+      return;
     }
+    this.isInvalidUser = true;
   }
 
   logoutUser() {
