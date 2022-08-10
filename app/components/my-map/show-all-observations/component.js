@@ -35,16 +35,16 @@ export default class MyMapShowAllObservationsComponent extends Component {
   @action
   markerTooltipOpen(observation) {
     if (this.isOpenObservationId) {
-      if (this.isOpenObservationId !== observation.get('id')) {
-        this.isOpenObservationId = observation.get('id');
+      if (this.isOpenObservationId !== observation.id) {
+        this.isOpenObservationId = observation.id;
         return;
       }
-      if (this.isOpenObservationId === observation.get('id')) {
+      if (this.isOpenObservationId === observation.id) {
         this.isOpenObservationId = null;
         return;
       }
     }
-    this.isOpenObservationId = observation.get('id');
+    this.isOpenObservationId = observation.id;
   }
 
   #recomputeCoordinates(startBounds) {

@@ -8,7 +8,7 @@ module('Acceptance | Component | my-map/add-observation ', function (hooks) {
   setupRenderingTest(hooks);
   setupMapTest(hooks);
 
-  test('check if map instance', async function (assert) {
+  test('check map instance', async function (assert) {
     await render(hbs`<ObservationForm::MapModal
     @onLatLocationChange={{this.onLatLocationChange}}
     @onLngLocationChange={{this.onLngLocationChange}}

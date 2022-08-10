@@ -7,11 +7,18 @@
     </tr>
   </thead>
   <tbody>
-    {{#each this.currentMapObservations as |observation|}}
+    {{#each this.currentMapObservations as |observation index|}}
       <tr>
-        <td>{{moment-format observation.observationDate 'DD-MM-YYYY'}}</td>
-        <td>{{observation.birdname}}</td>
-        <td>{{observation.owner.username}}</td>
+        <td data-test-observation-observationDate={{index}}>{{moment-format
+            observation.observationDate
+            'DD-MM-YYYY'
+          }}</td>
+        <td
+          data-test-observation-birdname={{index}}
+        >{{observation.birdname}}</td>
+        <td
+          data-test-observation-username={{index}}
+        >{{observation.owner.username}}</td>
       </tr>
     {{/each}}
   </tbody>
