@@ -23,8 +23,12 @@ module(
 
       this.set('currentUserObservation', currentUserObservation);
 
-      await render(hbs`<ShowObservations::EditDeleteButtons @observationOwner={{this.currentUserObservation.owner.username}}
-            @currentObservation={{this.currentUserObservation}} />`);
+      await render(hbs`
+        <ShowObservations::EditDeleteButtons 
+          @observationOwner={{this.currentUserObservation.owner.username}}
+          @currentObservation={{this.currentUserObservation}}
+        />
+      `);
 
       assert.dom('[data-test-edit-button]').exists();
       assert.dom('[data-test-delete-button]').exists();

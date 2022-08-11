@@ -15,8 +15,12 @@ module(
 
       this.set('observation', observation);
 
-      await render(hbs`<ShowObservations::EditDeleteButtons::DeleteModal @hideDeleteModal={{false}}
-            @currentObservation={{this.observation}} />`);
+      await render(hbs`
+        <ShowObservations::EditDeleteButtons::DeleteModal 
+          @hideDeleteModal={{false}}
+          @currentObservation={{this.observation}}
+        />
+      `);
 
       assert.dom('[data-test-button-confirmation]').exists();
       assert.dom('[data-test-button-denial]').exists();

@@ -48,11 +48,14 @@ module(
     });
 
     test('main map with markers', async function (assert) {
-      await render(hbs`<MyMap::ShowAllObservations 
-      @lat='49.668437' 
-      @lng='19.189728'
-      @zoom={{12}}
-      @observations={{this.observations}} />`);
+      await render(hbs`
+        <MyMap::ShowAllObservations 
+          @lat='49.668437' 
+          @lng='19.189728'
+          @zoom={{12}}
+          @observations={{this.observations}} 
+        />
+      `);
 
       const { map, components } = await waitForMap();
 
@@ -89,11 +92,13 @@ module(
       this.set('currentLatBounds', currentLatBounds);
       this.set('currentLngBounds', currentLngBounds);
 
-      await render(hbs`<MyMap::ShowAllObservations::ObservationsOnMapTable
-      @observations={{this.observations}}
-      @currentLatBounds={{this.currentLatBounds}}
-      @currentLngBounds={{this.currentLngBounds}}
-      />`);
+      await render(hbs`
+        <MyMap::ShowAllObservations::ObservationsOnMapTable
+          @observations={{this.observations}}
+          @currentLatBounds={{this.currentLatBounds}}
+          @currentLngBounds={{this.currentLngBounds}}
+        />
+      `);
 
       this.observations.map((observation, index) => {
         const stringDate = moment(observation.observationDate).format(
@@ -110,11 +115,13 @@ module(
           .hasText(observation.owner.username);
       });
 
-      await render(hbs`<MyMap::ShowAllObservations::ObservationsOnMapTable
-      @observations={{this.observations}}
-      @currentLatBounds={{this.currentLatBounds}}
-      @currentLngBounds={{this.currentLngBounds}}
-      />`);
+      await render(hbs`
+        <MyMap::ShowAllObservations::ObservationsOnMapTable
+          @observations={{this.observations}}
+          @currentLatBounds={{this.currentLatBounds}}
+          @currentLngBounds={{this.currentLngBounds}}
+        />
+      `);
 
       currentLatBounds = [49.664353, 49.664356];
       currentLngBounds = [19.184908, 19.18491];
