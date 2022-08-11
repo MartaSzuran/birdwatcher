@@ -9,10 +9,11 @@
   @streetViewControl={{false}}
   @onceOnIdle={{this.saveStartBounds}}
   @onBoundsChanged={{this.onBoundsChange}}
+  data-test-main-map
   as |map|
 >
 
-  {{#each @observations as |observation|}}
+  {{#each @observations as |observation index|}}
     <map.marker
       @lat={{observation.latLocation}}
       @lng={{observation.lngLocation}}
@@ -21,9 +22,9 @@
     >
       <marker.infoWindow @isOpen={{eq observation.id this.isOpenObservationId}}>
         <div class='text-center'>
-          <div>
+          <span data-test-info-window={{index}}>
             {{observation.birdname}}
-          </div>
+          </span>
         </div>
       </marker.infoWindow>
     </map.marker>

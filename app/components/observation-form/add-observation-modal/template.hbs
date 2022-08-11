@@ -5,11 +5,13 @@
       type='button'
       class='btn btn-success'
       {{on 'click' this.stayOnAddObservationSide}}
+      data-test-button-add-another-observation
     >Add another observation</button>
     <button
       type='button'
       class='btn btn-secondary'
       {{on 'click' this.redirectToUserProfile}}
+      data-test-button-go-to-observation-list
     >My observations list</button>
   </div>
 </ModalDialog>
