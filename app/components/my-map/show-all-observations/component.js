@@ -33,8 +33,7 @@ export default class MyMapShowAllObservationsComponent extends Component {
   }
 
   @action
-  markerTooltipOpen(observation) {
-    const { id } = observation;
+  markerTooltipOpen({ id }) {
     if (this.isOpenObservationId) {
       if (this.isOpenObservationId !== id) {
         this.isOpenObservationId = id;
