@@ -23,7 +23,7 @@ module('Acceptance | user', function (hooks) {
     this.set('currentObservation', currentObservation);
   });
 
-  test('visiting /user', async function (assert) {
+  test('visiting user', async function (assert) {
     await visit('user');
     assert.strictEqual(currentURL(), 'user');
 
