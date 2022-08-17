@@ -2,8 +2,6 @@ import { module, test } from 'qunit';
 import { visit, currentURL, click } from '@ember/test-helpers';
 import { setupApplicationTest } from 'ember-qunit';
 import { setupMirage } from 'ember-cli-mirage/test-support';
-import { render } from '@ember/test-helpers';
-import { hbs } from 'ember-cli-htmlbars';
 
 module('Acceptance | user', function (hooks) {
   setupApplicationTest(hooks);
@@ -11,7 +9,7 @@ module('Acceptance | user', function (hooks) {
 
   hooks.beforeEach(async function () {
     const sessionService = this.owner.lookup('service:session');
-    const store = this.owner.lookup('sercie:store');
+    const store = this.owner.lookup('service:store');
 
     this.set('store', store);
     const user = this.server.create('user');
@@ -53,6 +51,6 @@ module('Acceptance | user', function (hooks) {
 
     assert.dom('[data-test-edit-button]').exists();
     await click('[data-test-edit-button]');
-    await visit(`/edit-observation/1`);
+    await visit('/edit-observation/1');
   });
 });
