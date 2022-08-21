@@ -12,32 +12,55 @@
       <span class='navbar-toggler-icon'></span>
     </button>
     <a class='navbar-brand' href='#'>
-      <img src='/assets/images/bird.png' alt='bird' width='40' height='34' />
+      <img
+        src='/assets/images/bird.png'
+        alt='bird'
+        width='40'
+        height='34'
+        data-test-navbar-bird-image
+      />
     </a>
     <div class='collapse navbar-collapse' id='navbarToggler'>
       <ul class='navbar-nav me-auto mb-2 mb-lg-0'>
         <li class='nav-item'>
-          <LinkTo @route='home.index' class='nav-link'>Home</LinkTo>
+          <LinkTo @route='home.index' class='nav-link' data-test-navbar-home>
+            Home
+          </LinkTo>
         </li>
         <li class='nav-item'>
-          <LinkTo @route='home.user' class='nav-link'>Profile</LinkTo>
+          <LinkTo @route='home.user' class='nav-link' data-test-navbar-profile>
+            Profile
+          </LinkTo>
         </li>
         <li class='nav-item'>
           <LinkTo
             @route='home.observations'
             class='nav-link'
-          >Observations</LinkTo>
+            data-test-navbar-observations
+          >
+            Observations
+          </LinkTo>
         </li>
         <li class='nav-item'>
-          <LinkTo @route='home.add-observation' class='nav-link'><b>Add
-              obeservation</b></LinkTo>
+          <LinkTo
+            @route='home.add-observation'
+            class='nav-link'
+            data-test-navbar-add-observation
+          >
+            <b>
+              Add observation
+            </b>
+          </LinkTo>
         </li>
         <li class='nav-item'>
           <LinkTo
             @route='login'
             class='nav-link'
             {{on 'click' this.onLogout}}
-          >Logout</LinkTo>
+            data-test-navbar-logout
+          >
+            Logout
+          </LinkTo>
         </li>
       </ul>
     </div>
