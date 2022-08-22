@@ -1,5 +1,5 @@
 import { module, test } from 'qunit';
-import { visit, currentURL, click } from '@ember/test-helpers';
+import { visit, currentURL, click, fillIn } from '@ember/test-helpers';
 import { setupApplicationTest } from 'ember-qunit';
 import { setupMirage } from 'ember-cli-mirage/test-support';
 
@@ -23,7 +23,7 @@ module('Acceptance || user-settings', function (hooks) {
     );
   });
 
-  test('user-settings', async function (assert) {
+  test('visit user-settings', async function (assert) {
     await visit('/user-settings');
     assert.strictEqual(currentURL(), '/user-settings');
 
@@ -31,21 +31,29 @@ module('Acceptance || user-settings', function (hooks) {
     assert
       .dom('[data-test-input-username]')
       .hasAttribute('placeholder', this.sessionService.currentUser.username);
+    await fillIn('[data-test-input-username]', 'Marta');
+    assert.dom('[data-test-input-username]').hasValue('Marta');
 
     assert.dom('[data-test-input-email]').exists();
     assert
       .dom('[data-test-input-email]')
       .hasAttribute('placeholder', this.sessionService.currentUser.email);
+    await fillIn('[data-test-input-email]', 'marta@o2.pl');
+    assert.dom('[data-test-input-email]').hasValue('marta@o2.pl');
 
     assert.dom('[data-test-input-info]').exists();
     assert
       .dom('[data-test-input-info]')
       .hasAttribute('placeholder', this.sessionService.currentUser.info);
+    await fillIn('[data-test-input-info]', 'super important');
+    assert.dom('[data-test-input-info]').hasValue('super important');
 
     assert.dom('[data-test-input-password]').exists();
     assert
       .dom('[data-test-input-password]')
       .hasAttribute('placeholder', this.sessionService.currentUser.password);
+    await fillIn('[data-test-input-password]', 'abc123');
+    assert.dom('[data-test-input-password]').hasValue('abc123');
 
     assert.dom('[data-test-input-photoURL]').exists();
 
@@ -61,6 +69,12 @@ module('Acceptance || user-settings', function (hooks) {
     assert.dom('[data-test-input-photoURL]').hasValue('robin.jpg');
 
     assert.dom('[ data-test-save-button]').exists();
+    await click('[data-test-save-button]');
+    await visit('/user');
+    assert.strictEqual(currentURL(), '/user');
+
+    await visit('/user-settings');
+    assert.strictEqual(currentURL(), '/user-settings');
 
     assert.dom('[ data-test-cancel-button]').exists();
     await click('[data-test-cancel-button]');
