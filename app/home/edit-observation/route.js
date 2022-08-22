@@ -1,6 +1,6 @@
 import Route from '@ember/routing/route';
 import { inject as service } from '@ember/service';
-export default class EditObsrvationRoute extends Route {
+export default class EditObservationRoute extends Route {
   @service store;
 
   model(params) {

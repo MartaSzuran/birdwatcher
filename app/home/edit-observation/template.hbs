@@ -3,15 +3,15 @@
 <form>
   <fieldset>
     <div class='input-group mb-3'>
-      <span
-        class='input-group-text'
-        name='inputGroup-sizing-default'
-      >Date</span>
+      <span class='input-group-text' name='inputGroup-sizing-default'>
+        Date
+      </span>
       <PikadayInput
         @format='YYYY-MM-DD'
         @value={{this.model.observationDate}}
         @onSelection={{this.onDateChange}}
         @readonly={{'readonly'}}
+        data-test-input-edit-obser-pikaday
       />
     </div>
     <div class='input-group mb-3'>
@@ -22,14 +22,14 @@
         aria-label='Sizing example input'
         aria-describedby='inputGroup-sizing-default'
         value={{this.model.birdname}}
-        {{on 'input' this.onBirdnameChange}}
+        {{on 'input' (fn this.onPropertyChange 'birdname')}}
+        data-test-input-edit-obser-birdname
       />
     </div>
     <div class='input-group mb-3'>
-      <span
-        class='input-group-text'
-        name='inputGroup-sizing-default'
-      >Location</span>
+      <span class='input-group-text' name='inputGroup-sizing-default'>
+        Location
+      </span>
       {{#if this.isShowMapModal}}
         <input
           type='location'
@@ -37,6 +37,7 @@
           aria-label='Sizing example input'
           aria-describedby='inputGroup-sizing-default'
           disabled
+          data-test-input-edit-obser-location
         />
       {{else}}
         <input
@@ -47,6 +48,7 @@
           value={{this.currentLocations}}
           placeholder={{this.currentLocations}}
           {{on 'click' this.showMapModal}}
+          data-test-input-edit-obser-location
         />
       {{/if}}
       {{#if this.isShowMapModal}}
@@ -61,17 +63,17 @@
     </div>
 
     <div class='input-group mb-3'>
-      <span
-        class='input-group-text'
-        name='inputGroup-sizing-default'
-      >Notes</span>
+      <span class='input-group-text' name='inputGroup-sizing-default'>
+        Notes
+      </span>
       <textarea
         class='form-control'
         id='exampleFormControlTextarea1'
         rows='3'
         value={{this.model.notes}}
         placeholder={{this.model.notes}}
-        {{on 'input' this.onNotesChange}}
+        {{on 'input' (fn this.onPropertyChange 'notes')}}
+        data-test-input-edit-obser-notes
       ></textarea>
     </div>
     <div class='mb-3 row'>
@@ -81,18 +83,15 @@
           class='btn w-50 btn-lg btn-primary active mr-1'
           disabled={{this.isEmptyField}}
           {{on 'click' this.onSave}}
+          data-test-edit-obser-button-save
         >Save</button>
         <button
           type='button'
           class='btn w-50 btn-lg btn-primary active mr-1'
           {{on 'click' this.onCancel}}
+          data-test-edit-obser-button-cancel
         >Cancel</button>
       </div>
     </div>
   </fieldset>
 </form>
-{{!-- {{#if this.isShowAddObservationModal}}
-  <ObservationForm::AddObservationModal
-    @hideAddObservationModal={{this.hideAddObservationModal}}
-  />
-{{/if}} --}}

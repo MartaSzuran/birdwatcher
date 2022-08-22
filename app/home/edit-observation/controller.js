@@ -17,18 +17,13 @@ export default class HomeEditObservationController extends Controller {
   }
 
   @action
+  onPropertyChange(propName, { target: { value } }) {
+    this.model[propName] = value;
+  }
+
+  @action
   onDateChange(date) {
     this.model.observationDate = moment(date).toDate();
-  }
-
-  @action
-  onBirdnameChange({ target: { value } }) {
-    this.model.birdname = value;
-  }
-
-  @action
-  onNotesChange({ target: { value } }) {
-    this.model.notes = value;
   }
 
   @action

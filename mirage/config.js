@@ -5,5 +5,7 @@ export default function () {
   this.put('/users/:id');
 
   this.get('/observations');
+  this.get('/observations/:id');
   this.post('/observations');
+  this.put('/observations/:id');
 }
