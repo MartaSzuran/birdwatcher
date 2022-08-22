@@ -11,6 +11,7 @@
       value={{this.model.username}}
       placeholder={{this.model.username}}
       {{on 'input' (fn this.onPropertyChange 'username')}}
+      data-test-input-username
     />
   </div>
   <div class='input-group mb-3'>
@@ -22,6 +23,7 @@
       value={{this.model.email}}
       placeholder={{this.model.email}}
       {{on 'input' (fn this.onPropertyChange 'email')}}
+      data-test-input-email
     />
   </div>
   <div class='input-group mb-3'>
@@ -33,13 +35,13 @@
       value={{this.model.info}}
       placeholder={{this.model.info}}
       {{on 'input' (fn this.onPropertyChange 'info')}}
+      data-test-input-info
     />
   </div>
   <div class='input-group mb-3'>
-    <span
-      class='input-group-text'
-      id='inputGroup-sizing-default3'
-    >*Password</span>
+    <span class='input-group-text' id='inputGroup-sizing-default3'>
+      *Password
+    </span>
     <input
       type='password'
       class='form-control'
@@ -47,6 +49,7 @@
       value={{this.model.password}}
       placeholder={{this.model.password}}
       {{on 'input' (fn this.onPropertyChange 'password')}}
+      data-test-input-password
     />
   </div>
   <div class='input-group mb-3'>
@@ -58,6 +61,7 @@
       value={{this.photo}}
       placeholder={{this.model.photoURL}}
       {{on 'input' (fn this.onPropertyChange 'photo')}}
+      data-test-input-photoURL
     />
     <button
       class='btn btn-outline-secondary'
@@ -67,7 +71,10 @@
       data-bs-target='#collapseDiv'
       aria-expanded='false'
       aria-controls='collapseDiv'
-    >Choose photo</button>
+      data-test-choose-photo-button
+    >
+      Choose photo
+    </button>
   </div>
 
   <RegistrationPhotos @setChosenPhoto={{this.setChosenPhoto}} />
@@ -78,12 +85,18 @@
         type='submit'
         class='btn w-50 btn-lg btn-primary active mr-1'
         {{on 'click' this.onSave}}
-      >Save</button>
+        data-test-save-button
+      >
+        Save
+      </button>
       <button
         type='button'
         class='btn w-50 btn-lg btn-primary active mr-1'
         {{on 'click' this.onCancel}}
-      >Cancel</button>
+        data-test-cancel-button
+      >
+        Cancel
+      </button>
     </div>
   </div>
 
