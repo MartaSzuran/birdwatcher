@@ -64,16 +64,12 @@ module('Acceptance | user', function (hooks) {
     await visit('user');
     assert.strictEqual(currentURL(), 'user');
 
-    assert.dom('[data-test-button-settings]').exists();
     await click('[data-test-button-settings]');
-    await visit('/user-settings');
     assert.strictEqual(currentURL(), '/user-settings');
 
     await visit('user');
     assert.strictEqual(currentURL(), 'user');
-    assert.dom('[data-test-add-observation-button]').exists();
     await click('[data-test-add-observation-button]');
-    await visit('/add-observation');
     assert.strictEqual(currentURL(), '/add-observation');
 
     await visit('user');

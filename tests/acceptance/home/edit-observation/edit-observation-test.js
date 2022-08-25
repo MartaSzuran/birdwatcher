@@ -56,9 +56,9 @@ module('Acceptance | edit-observation', function (hooks) {
     await visit('/edit-observation/1');
     assert.strictEqual(currentURL(), '/edit-observation/1');
 
-    assert.dom('[data-test-input-edit-obser-pikaday]').exists();
     assert
       .dom('[data-test-input-edit-obser-pikaday]')
+      .exists()
       .hasValue(
         moment(this.currentObservation.observationDate).format('YYYY-MM-DD')
       );
@@ -69,7 +69,6 @@ module('Acceptance | edit-observation', function (hooks) {
     assert.strictEqual(Pikaday.selectedDay(), '28');
     await closePikaday('[data-test-input-edit-obser-pikaday]');
 
-    assert.dom('[data-test-input-edit-obser-birdname]').exists();
     assert
       .dom('[data-test-input-edit-obser-birdname]')
       .hasValue(this.currentObservation.birdname);
@@ -91,19 +90,16 @@ module('Acceptance | edit-observation', function (hooks) {
       .dom('[data-test-input-edit-obser-location]')
       .hasValue(`${inputArr[2].value}`);
 
-    assert.dom('[data-test-input-edit-obser-notes]').exists();
     assert
       .dom('[data-test-input-edit-obser-notes]')
       .hasValue(this.currentObservation.notes);
     await fillIn('[data-test-input-edit-obser-notes]', 'bleble');
     assert.dom('[data-test-input-edit-obser-notes]').hasValue('bleble');
 
-    assert.dom('[data-test-edit-obser-button-save]').exists();
     await click('[data-test-edit-obser-button-save]');
     assert.strictEqual(currentURL(), '/user');
 
     await visit('/edit-observation/1');
-    assert.dom('[data-test-edit-obser-button-cancel]').exists();
     await click('[data-test-edit-obser-button-cancel]');
     assert.strictEqual(currentURL(), '/user');
   });
