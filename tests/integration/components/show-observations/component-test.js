@@ -9,7 +9,7 @@ module('Integration | Component | show-observations', function (hooks) {
   setupRenderingTest(hooks);
   setupMirage(hooks);
 
-  test('it renders', async function (assert) {
+  test('show observation', async function (assert) {
     const observations = this.server.createList('observation', 5);
     const user = this.server.create('user');
     const currentUserObservation = this.server.create('observation', {
@@ -44,6 +44,10 @@ module('Integration | Component | show-observations', function (hooks) {
       assert
         .dom(`[data-test-observation-notes="${index}"]`)
         .hasText(observation.notes);
+      if (index === observations.length - 1) {
+        assert.dom('[data-test-delete-button]').exists();
+        assert.dom('[data-test-edit-button]').exists();
+      }
     });
   });
 });

@@ -1,11 +1,19 @@
 import Route from '@ember/routing/route';
 import { inject as service } from '@ember/service';
 import moment from 'moment';
+import ENV from 'birdwatcher/config/environment';
+
+const isTesting = ENV.environment === 'test';
 
 export default class ApplicationRoute extends Route {
   @service store;
 
   async beforeModel() {
+    const isFilledDataBase = window.localStorage.length;
+    if (!isFilledDataBase || isTesting) {
+      return;
+    }
+
     const user1 = {
       id: 1,
       username: 'Pan Drozd',
